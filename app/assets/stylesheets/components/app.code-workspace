@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../Documents/app"
+		},
+		{
+			"path": "../../../../../../../Documents/next.js"
+		},
+		{
+			"path": "../../../../../../landing-page-applyace"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "landing-page-applyace",
+		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp",
+			"istream": "cpp",
+			"*.tcc": "cpp",
+			"ctime": "cpp",
+			"sstream": "cpp"
+		}
+	}
+}

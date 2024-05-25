@@ -1,0 +1,465 @@
+  <div  class="2xl:col-span-4 xl:col-span-3 col-span-8 sm:px-5 " form-hidden>
+      <div class=" overflow-y-scroll h-screen container-sm mx-auto 2xl:p-12 2xl:pr-1.5 md:pr-6  p-8 resumeform ">
+        <form class="mt-8 space-y-3 resumeformContent" data-cv-target="form" action="/cvs" method="post" enctype="multipart/form-data"   >
+          <div class="w-full grid place-content-center pb-7 overflow-hidden">
+            <div class="relative group">
+              <div class="absolute -right-6 top-0  ">
+                <svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M11.695 15.117l6.531-6.344L15.5 6l-6.625 6.296 2.82 2.82zM10.27 16.52l-2.828-2.829-.446.446v2.828h2.829l.445-.445zm2.122.707l-1.415 1.414a1 1 0 0 1-.63.29H6.116c-.612.047-1.132-.306-1.085-.917v-4.4a1 1 0 0 1 .29-.63l2.12-2.121.018.017 6.909-6.578a1.6 1.6 0 0 1 2.263 0l3.292 3.338a1.6 1.6 0 0 1 0 2.263l-7.531 7.324z"></path></svg>
+              </div>
+              <div id="titleInput" data-action="input->cv#updateWebpageTitle" contenteditable="true" class="input-field whitespace-nowrap w-full text-2xl font-semibold bg-transparent outline-0" data-cv-target="titleInput">Untitled</div>
+              <div class="inputBottomBorder"></div>
+            </div>
+          </div>
+          <div class="w-full grid relative pb-7 place-content-center">
+            <label for="photoInput" data-action="click->cv#updatePhoto" class="w-full group gap-11  cursor-pointer">
+              <div class="w-16 h-16 relative overflow-hidden rounded-lg flex items-center justify-center hover:bg-blue-100  group-hover:bg-blue-100 transition-colors bg-blue-50">
+                <%= image_tag("upload.svg",data: { "cv-target": "photoDisplay" } )%>
+              </div>
+              <div data-cv-target="uploadText" class="font-normal text-xs text-center mt-1 group">Upload</div>
+              <input type="file" data-action="change->cv#updatePhoto"  id="photoInput" name= "cv_image" class="hidden" accept="image/*"/>
+            </label>
+            <div class="text-black font-normal text-xs rounded-lg text-center mt-1 ">
+              <span data-cv-target="deleteText"  data-action="click->cv#deletePhoto" class=" text-red-500 font-normal cursor-pointer hidden">Delete</span>
+            </div>
+          </div>
+          <div data-cv-target="stepfrom" data-stepfrom-value="1" class="space-y-3 ">
+            <div class="font-semibold text-xl text-sky-800">Personal Details</div>
+            <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+              <div class="w-full">
+                <label for="firstName" class="md:mt-0 mt-2 font-medium text-gray-700">First Name</label>
+                <input data-cv-target="input" id="firstName" name="first_name"  placeholder="Daneil" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200  block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+              </div>
+              <div class="w-full">
+                <label for="lastName"class="md:mt-0 mt-2 font-medium text-gray-700">Last Name</label>
+                  <input data-cv-target="input" id="lastName" name="last_name" placeholder="Aanderson" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+            </div>
+            <div class="sm:flex grid sm:gap-5 gap-3 items-center ">
+              <div class="w-full">
+                <label for="jobTitle"class="md:mt-0 mt-2 font-medium text-gray-700">Job Title</label>
+                  <input  data-cv-target="input" id="jobTitle" list="jobTitles" placeholder="Job Title" name="job_title" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                <datalist id="jobTitles">
+                  <option value="AI Ethicist">
+                  <option value="Blockchain Developer">
+                  <option value="Cybersecurity Analyst">
+                  <option value="Digital Strategist">
+                  <option value="E-commerce Specialist">
+                  <option value="Sustainability Analyst">
+                  <option value="Genomic Counselor">
+                  <option value="Energy Engineer">
+                  <option value="Informatics Specialist">
+                  <option value="Marketing Manager">
+                  <option value="Learning Engineer">
+                  <option value="Metaverse Designer">
+                  <option value="Technology Researcher">
+                  <option value="NFT Consultant">
+                  <option value="Computing Scientist">
+                  <option value="Work Coordinator">
+                  <option value="Automation Analyst">
+                  <option value="Media Manager">
+                  <option value="Urban Planner">
+                  <option value="Web Developer">
+                  <option value="Teacher">
+                  <option value="Security Guard">
+                  <option value="Nurse">
+                  <option value="Accountant">
+                  <option value="Chef">
+                  <option value="Carpenter">
+                  <option value="Electrician">
+                  <option value="Plumber">
+                  <option value="Painter">
+                  <option value="Mechanic">
+                  <option value="Librarian">
+                  <option value="Waiter">
+                  <option value="Cleaner">
+                  <option value="Driver">
+                  <option value="Farmer">
+                  <option value="Police Officer">
+                  <option value="Firefighter">
+                  <option value="Paramedic">
+                  <option value="Cashier">
+                  <option value="Student">
+                </datalist>
+              </div>
+              <div class="w-full">
+                <label for="phone"class="md:mt-0 mt-2 font-medium text-gray-700">Phone</label>
+                  <input data-cv-target="input" id="phone" placeholder="123-456-7890"  name="phone" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+            </div>
+            <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+              <div class="w-full">
+                <label for="email"class="md:mt-0 mt-2 font-medium text-gray-700">Email</label>
+                  <input data-cv-target="input" id="email" name="email" placeholder="Hello@applyace.com" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+              </div>
+              <div class="w-full "  >
+                <label for="website" class="md:mt-0 mt-2 font-medium text-gray-700">Website</label>
+                <div class="w-full flex gap-3 justify-center items-center">
+                  <input data-cv-target="input"  id="website" name="website" placeholder="www.applyace.com"  disabled class="placeholder-gray-300  bg-slate-100 cursor-not-allowed focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  <button data-action="click->cv#websiteoptional" type="button" class=" bg-blue-50  hover:bg-blue-100 p-4  sm:p-3.5 border border-transparent shadow-sm font-medium rounded-lg text-white  h-full flex justify-center items-center  text-center text-base">
+                    <svg  data-cv-target="add" class="" xmlns="http://www.w3.org/2000/svg" width="24" height=  "24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                    <svg data-cv-target="delete" class="text-red-600 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="w-full">
+                <label for="location"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                  <input data-cv-target="input" id="location" name="personal_location" placeholder="Harbanspura Lahore Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+            </div>
+            <div class="w-full ">
+                <label for="personalAbout" class="md:mt-0 mt-2  font-medium text-gray-700" data-cv-label="About Info " > About Info</label>
+                <textarea data-cv-target="editor" data-cv-id="editor1"  id="personalAbout" name="personal_about_info"  rows="4" placeholder="I am Student..." class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"></textarea>
+                <button class="md:w-fit w-full md:justify-start justify-center   mt-2  mb-1  items-center flex bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate"  data-cv-button="About Info"
+                    data-cv-label="About Info" data-action="click->cv#generate" data-cv-id="editor1">
+                     <div class="">Auto Generate</div>
+                    <%= image_tag("https://cdn.pixabay.com/animation/2023/05/02/04/29/04-29-06-428_512.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+                </button>
+                <div id="word-count"></div>
+            </div>
+          </div>
+          <div data-cv-target="stepfrom" data-stepfrom-value="2" class="hidden space-y-3">
+              <div class="font-semibold text-xl text-sky-800">Educational Qualification 
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                  <div class="w-full">
+                    <label for="degreeName-1st" class="md:mt-0 mt-2 font-medium text-gray-700" >1st Degree</label>
+                      <input data-cv-target="input" id="degreeName-1st" name="first_education_degree"  placeholder="Bachelor in Computer Science" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                <div class="w-full">
+                  <label for="instituteName-1st" class="md:mt-0 mt-2 font-medium text-gray-700">Institute</label>
+                    <input data-cv-target="input" id="instituteName-1st" name="first_education_institute" placeholder="Comsat Lahore" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center ">
+                  <% if @condition_for_first_page %>
+                  <div class="w-full">
+                    <label for="uniLocation-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                      <input data-cv-target="input" id="uniLocation-1st" name="first_education_location" placeholder="1.5 KM Defence Rd،Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                  </div>
+                  <%end%>
+                  <div class="w-full">
+                    <label for="degreeDate-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                      <input data-cv-target="input" id="degreeDate-1st" name="first_education_date" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                </div>
+                <div class="w-full">
+                    <label for="uniAbout-1st"class="md:mt-0 mt-2 font-medium text-gray-700">About</label>
+                      <textarea data-cv-target="editor" data-cv-id="editor2"  name="first_education_about" rows="4" placeholder="I got 3.7 CGPA......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"></textarea>
+                </div>
+                <div class="sm:flex grid sm:gap-5  gap-3 items-center">
+                  <div class="w-full">
+                    <label for="degreeName-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">2nd Degree</label>
+                      <input data-cv-target="input" id="degreeName-2nd"  name="second_education_degree" placeholder="Phd in Software" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                <div class="w-full">
+                  <label for="instituteName-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Institute</label>
+                    <input data-cv-target="input" id="instituteName-2nd" placeholder="Comsat Lahore" name="second_education_institute" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center  ">
+                  <% if @condition_for_first_page %>
+                  <div class="w-full">
+                    <label for="uniLocation-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                      <input data-cv-target="input" id="uniLocation-2nd" placeholder="1.5 KM Defence Rd،Lahore,Pakistan"   name="second_education_location" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <%end%>
+                  <div class="w-full">
+                    <label for="degreeDate-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                      <input data-cv-target="input" id="degreeDate-2nd" placeholder="Jan 2010-feb 2020"  name="second_education_date" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                </div>
+                <div class="w-full">
+                    <label for="uniAbout-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">About</label>
+                      <textarea data-cv-target="editor" data-cv-id="editor3"   name="second_education_about" rows="4" placeholder="I got 3.7 CGPA......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"></textarea>
+                </div>
+              <div  data-cv-target="eduAdd">
+                <!-- form fields generate  by js there-->
+            </div>
+            <!-- form fields generate  button-->
+            <% if @condition_for_first_page %>
+          <button type="button" data-action="click->cv#eduFormAdded" data-param-temp="temp1" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+          <% end %>
+          <% if @condition_for_second_page %>
+          <button type="button" data-action="click->cv#eduFormAdded" data-param-temp="temp2" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+          <% end %>
+          </div>
+          <div data-cv-target="stepfrom" data-stepfrom-value="3" class="hidden space-y-3">
+            <div class="font-semibold text-xl text-sky-800">Work Experience</div>
+              <div class=" sm:flex grid sm:gap-5 gap-3 items-center">
+                <div class="w-full">
+                  <label for="designation-1st" class="md:mt-0 mt-2 font-medium text-gray-700">1st Designation </label>
+                    <input data-cv-target="input"  id="designation-1st"  name ="first_job_designation" placeholder="Manager" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              <div class="w-full">
+                <label for="companyName-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Company</label>
+                  <input data-cv-target="input"  id="companyName-1st" name ="first_job_company" placeholder="Softaims" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              </div>
+              <div class="items-center sm:flex grid sm:gap-5 gap-3">
+                <% if @condition_for_first_page %>
+                <div class="w-full">
+                  <label for="companyLocation-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                    <input data-cv-target="input"  id="companyLocation-1st" name="first_job_location" placeholder="DHA Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                </div>
+                <%end%>
+                <div class="w-full">
+                  <label for="companyDate-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                    <input data-cv-target="input" id="companyDate-1st" name="first_job_date" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                </div>
+              </div>
+              <div class="w-full"  data-cv-label="About Work Experience" >
+                  <label for="workExperience-1st"class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-target="label">About Work Experience</label>
+                    <textarea data-cv-target="editor" data-cv-id="editor4" id="workExperience-1st" name="first_job_about_work" rows="4" placeholder="I have immensely good Experience......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"></textarea>
+                  <button class="md:w-fit w-full md:justify-start justify-center   flex my-3 items-center   bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate" data-cv-button="About Work Experience"
+                  data-cv-label="About Work Experience" data-action="click->cv#generate" data-cv-id="editor4">
+                  <div class="">Auto Generate</div>
+                    <%= image_tag("https://cdn.pixabay.com/animation/2023/05/02/04/29/04-29-06-428_512.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+                  </button>
+              </div>
+              <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                <div class="w-full">
+                  <label for="designation-2nd"class="md:mt-0 mt-2 font-medium text-gray-700" >2nd Designation</label>
+                    <input data-cv-target="input" id="designation-2nd" name="second_job_designation" placeholder="Manager" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              <div class="w-full">
+                <label for="companyName-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Company</label>
+                  <input data-cv-target="input"  id="companyName-2nd" name="second_job_company" placeholder="Softaims" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              </div>
+              <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                <% if @condition_for_first_page %>
+                <div class="w-full">
+                  <label for="companyLocation-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                    <input data-cv-target="input"  id="companyLocation-2nd" name="second_job_location" placeholder="DHA Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                </div>
+                <%end%>
+                <div class="w-full">
+                  <label for="companyDate-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                    <input data-cv-target="input"  id="companyDate-2nd" name="second_job_date" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+              </div>
+              <div class="w-full">
+                  <label for="workExperience-2nd" class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-label="About Work Experience" >About Work Experience</label>
+                    <textarea data-cv-target="editor" data-cv-id="editor5" id="workExperience-2nd"  name="second_job_about_work" rows="4" placeholder="I have immensely good Experience......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"></textarea>
+                    <button class="md:w-fit w-full flex md:justify-start justify-center  my-3 items-center   bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate" data-cv-button="About Work Experience"
+                      data-cv-label="About Work Experience"  data-action="click->cv#generate" data-cv-id="editor5">
+                       <div class="">Auto Generate</div>
+                    <%= image_tag("https://cdn.pixabay.com/animation/2023/05/02/04/29/04-29-06-428_512.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+                  </button>
+              </div>
+              <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                <div class="w-full">
+                  <label for="designation-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">3rd Designation</label>
+                    <input data-cv-target="input"  id="designation-3rd" name="third_job_designation" placeholder="Manager" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              <div class="w-full">
+                <label for="companyName-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">Company</label>
+                  <input data-cv-target="input"  id="companyName-3rd" name="third_job_company" placeholder="Softaims" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              </div>
+              <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                <% if @condition_for_first_page %>
+                <div class="w-full">
+                  <label for="companyLocation-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                    <input data-cv-target="input"  id="companyLocation-3rd"  name="third_job_location" placeholder="DHA Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                </div>
+                <%end%>
+                <div class="w-full">
+                  <label for="companyDate-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                    <input data-cv-target="input"  id="companyDate-3rd" name="third_job_date" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+              </div>
+              <div class="w-full">
+                  <label for="workExperience-3rd"class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-label="About Work Experience" > About Work Experience</label>
+                    <textarea data-cv-target="editor" data-cv-id="editor6"  name="third_job_about_work" rows="4" placeholder="I have immensely good Experience......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"></textarea>
+                    <button class="md:w-fit w-full  md:justify-start justify-center   flex my-3 items-center  bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate" data-cv-button="About Work Experience"
+                      data-cv-label="About Work Experience" data-action="click->cv#generate"  data-cv-id="editor6">
+                         <div class="">Auto Generate</div>
+                      <%= image_tag("https://cdn.pixabay.com/animation/2023/05/02/04/29/04-29-06-428_512.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+                    </button>
+              </div>
+
+              <div  data-cv-target="workAdd">
+                <!-- form fields generate  by js there-->
+            </div>
+            <!-- form fields generate  button-->
+            <% if @condition_for_first_page %>
+          <button type="button" data-action="click->cv#workFormAdded" data-param-temp="temp1" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+          <% end %>
+          <% if @condition_for_second_page %>
+          <button type="button" data-action="click->cv#workFormAdded" data-param-temp="temp2" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+          <% end %>
+          </div>
+          <div data-cv-target="stepfrom" data-stepfrom-value="4" class="hidden accent-sky-800 space-y-3">    
+            <div class="font-semibold text-xl text-sky-800">Profestional Skill</div>
+            <div class=" grid gap-1 items-center">
+              <div class="w-full">
+                <label for="skill-1st"class="md:mt-0 mt-2 font-medium text-gray-700">1st skill</label>
+                  <input data-cv-target="input" id="skill-1st" name="first_skill" placeholder="skill" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+            </div>
+              <div class="w-full">
+                <input  data-action="input->cv#skillHobbyRange"  data-div-id="skillrangeresume-1" data-level-id="skill-level-1"  type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+              </div>
+            </div>
+            <div class=" grid gap-1 items-center">
+              <div class="w-full">
+                <label for="skill-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">2nd skill</label>
+                  <input data-cv-target="input" id="skill-2nd" name="second_skill" placeholder="skill" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+            </div>
+            <div class="w-full">
+              <input  data-action="input->cv#skillHobbyRange" data-div-id="skillrangeresume-2" data-level-id="skill-level-2"  type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700 ">
+            </div>
+            </div>
+            <div class=" grid gap-1 items-center">
+              <div class="w-full">
+                <label for="skill-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">3rd skill</label>
+                  <input  data-cv-target="input" id="skill-3rd"   name="third_skill" placeholder="skill" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+            </div>
+              <div class="w-full">
+                <input data-action="input->cv#skillHobbyRange" data-div-id="skillrangeresume-3" data-level-id="skill-level-3"  type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+              </div>
+            </div>
+              
+            <div  data-cv-target="skillAdd">
+              <!-- form fields generate  by js there-->
+          </div>
+          <!-- form fields generate  button-->
+          <% if @condition_for_first_page %>
+          <button type="button" data-action="click->cv#skillAdded" data-param-temp="temp1" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+          <% end %>
+          <% if @condition_for_second_page %>
+          <button type="button" data-action="click->cv#skillAdded" data-param-temp="temp2" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+          <% end %>
+          </div>
+          <div data-cv-target="stepfrom" data-stepfrom-value="5" class="hidden accent-sky-800 space-y-3">
+              <div class="font-semibold text-xl text-sky-800">Hobbies</div>
+              <div class="grid gap-1 items-center">
+                <div class="w-full">
+                  <label for="hobby-1st"class="md:mt-0 mt-2 font-medium text-gray-700">1st Hobby</label>
+                    <input data-cv-target="input" id="hobby-1st" name="first_hobby" placeholder="hobby" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+              </div>
+              <div class="w-full">
+                <input data-action="input->cv#skillHobbyRange" data-div-id="hobbyrangeresume-1" data-level-id="hobby-level-1"  id="hobbyrange-1" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+              </div>
+              </div>
+              <div class="grid gap-1 items-center">
+                  <div class="w-full">
+                    <label for="hobby-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">2nd Hobby</label>
+                      <input data-cv-target="input" id="hobby-2nd"  name="second_hobby" placeholder="hobby" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                <div class="w-full">
+                  <input  data-action="input->cv#skillHobbyRange" data-div-id="hobbyrangeresume-2" data-level-id="hobby-level-2"   id="hobbyrange-2" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                </div>
+              </div>
+              <div class="grid gap-1 items-center">
+                <div class="w-full">
+                  <label for="hobby-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">3rd Hobby</label>
+                    <input data-cv-target="input" id="hobby-3rd" name="third_hobby" placeholder="hobby" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                <div class="w-full">
+                  <input data-action="input->cv#skillHobbyRange" data-div-id="hobbyrangeresume-3" data-level-id="hobby-level-3"   id="hobbyrange-3" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                </div>
+              </div>
+              <div  data-cv-target="hobbyAdd">
+                <!-- form fields generate  by js there-->
+              </div>
+              <!-- form fields generate  button-->
+              <% if @condition_for_first_page %>
+              <button type="button" data-action="click->cv#hobbyAdded" data-param-temp="temp1" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+              <% end %>
+              <% if @condition_for_second_page %>
+              <button type="button" data-action="click->cv#hobbyAdded" data-param-temp="temp2" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+              <% end %>
+          </div>
+          <% if @condition_for_first_page %>
+          <div data-cv-target="stepfrom" data-stepfrom-value="6" class="hidden space-y-3">
+            <div class="d">
+              <div class="font-semibold text-xl text-sky-800">Reference Details</div>
+              <div data-cv-target="referenceAdd" >
+               
+              </div>
+              <button type="button" data-action="click->cv#referenceAdded" data-param-temp="temp1" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+            </div>
+          </div>
+          <% else %>
+          <div data-cv-target="stepfrom" data-stepfrom-value="6" class="hidden space-y-3">
+            <div class="w-full sm:flex sm:space-y-0 space-y-5   gap-10 items-center">
+              <div class="w-full">
+                <label for="fontStyle" class="md:mt-0 mt-2 font-medium text-gray-700">Font Style</label>
+                  <select data-cv-target="selectFont" name="cv_font_style" data-action="change->cv#changeFont" id="fontStyle" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border " >
+                    <option value="" selected>Default</option>
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="'Times New Roman', serif">Times New Roman</option>
+                    <option value="'Courier New', monospace">Courier New</option>
+                    <option value="Josefin Sans">Josefin Sans</option>
+                    <option value="Jost">Jost</option>
+                    <option value="Verdana, sans-serif">Verdana</option>
+                  </select>
+              </div>
+              <div class="w-full">
+                <label for="colorInput" class="relative left-0.5 md:mt-0 mt-2 font-medium text-gray-700">Color</label>            
+                <% if @condition_for_first_page  %>
+                <input type="color" id="colorInput" name="cv_color"  data-cv-target="colorInput" data-action="input->cv#changeColor" value="#2c5282" class="placeholder-gray-300 focus:ring-blue-200 py-3.5   focus:border-blue-200 focus:border-2 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  bg-white h-14">
+                <% end %>
+                <% if @condition_for_second_page %>
+                 <input type="color" id="colorInput" name="cv_color"  data-cv-target="colorInput" data-action="input->cv#changeColor" value="#6366f1" class="placeholder-gray-300 focus:ring-blue-200 py-3.5   focus:border-blue-200 focus:border-2 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  bg-white h-14">
+                <% end %>
+              </div>
+            </div>            
+        </div> 
+          <% end %>
+          <% if @condition_for_first_page  %>
+          <div data-cv-target="stepfrom" data-stepfrom-value="7" class="hidden space-y-3">
+              <div class="w-full sm:flex sm:space-y-0 space-y-5   gap-10 items-center">
+                <div class="w-full">
+                  <label for="fontStyle" class="md:mt-0 mt-2 font-medium text-gray-700">Font Style</label>
+                    <select data-cv-target="selectFont" name="cv_font_style" data-action="change->cv#changeFont" id="fontStyle" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border " >
+                      <option value="" selected>Default</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                      <option value="Poppins">Poppins</option>
+                      <option value="'Times New Roman', serif">Times New Roman</option>
+                      <option value="'Courier New', monospace">Courier New</option>
+                      <option value="Josefin Sans">Josefin Sans</option>
+                      <option value="Jost">Jost</option>
+                      <option value="Verdana, sans-serif">Verdana</option>
+                    </select>
+                </div>
+                <div class="w-full">
+                  <label for="colorInput" class="relative left-0.5 md:mt-0 mt-2 font-medium text-gray-700">Color</label>            
+                  <% if @condition_for_first_page  %>
+                  <input type="color" id="colorInput" name="cv_color"  data-cv-target="colorInput" data-action="input->cv#changeColor" value="#2c5282" class="placeholder-gray-300 focus:ring-blue-200 py-3.5   focus:border-blue-200 focus:border-2 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  bg-white h-14">
+                  <% end %>
+                  <% if @condition_for_second_page %>
+                   <input type="color" id="colorInput" name="cv_color"  data-cv-target="colorInput" data-action="input->cv#changeColor" value="#6366f1" class="placeholder-gray-300 focus:ring-blue-200 py-3.5   focus:border-blue-200 focus:border-2 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  bg-white h-14">
+                  <% end %>
+                </div>
+              </div>            
+          </div> 
+          <% end %>
+               <!-- form buttons  -->
+               <div class=" flex md:flex-row flex-col  w-full justify-between gap-2 pt-1">
+                <div class="gap-2.5 flex md:flex-row flex-col-reverse  md:w-fit w-full">
+                  <button type="button" data-action="cv#previous" data-cv-target="previous" class="md:w-fit w-full hidden  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl">Previous</button>
+                  <button type="button" data-action="cv#next" data-cv-target="next"class=" md:w-fit w-full text-center  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl ">Next</button>
+                </div>
+                <div class="flex md:flex-row flex-col gap-3 md:w-fit w-full">
+                  <button type="submit" data-cv-target="submitBtn" class=" md:w-fit w-full hidden bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  text-center  ">Save</button>
+                  <button type="button" data-cv-target="downloadbtn" class=" md:w-fit w-full hidden bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  text-center  "  data-cv-target="downloadPDF" data-action="click->cv#downloadPDF">Download PDF</button>
+                  <button data-action="click->cv#displayResume"  type="button" class=" md:w-fit w-full bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white text-center xl:hidden  flex gap-2 justify-center items-center ">
+                    <div class="">
+                    <svg fill="#000000" width="20" height="20" viewBox="0 0 846.66 846.66" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style type="text/css">  .fil0 {fill:rgb(255, 255, 255);fill-rule:nonzero}  </style> </defs> <g id="Layer_x0020_1"> <path class="fil0" d="M539.75 794.68c27.15,0 27.15,41.29 0,41.29l-497.47 0c-11.4,0 -20.64,-9.25 -20.64,-20.65l0 -621.69c0,-5.7 2.31,-10.87 6.04,-14.6l162.3 -162.29c4.03,-4.03 9.31,-6.05 14.59,-6.05l466.89 0c11.4,0 20.65,9.25 20.65,20.65l0 361.36c0,27.16 -41.29,27.16 -41.29,0l0 -340.72 -437.7 0 -150.19 150.2 0 592.5 476.82 0zm-351.21 -181.98c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm496.57 238.25c49.84,0 90.24,40.4 90.24,90.24 0,18.1 -5.33,34.95 -14.5,49.07 37.57,24.93 61.47,66.08 64.13,111.2 1.59,27.06 -39.55,29.47 -41.13,2.42 -2.11,-35.69 -22.61,-67.48 -54.13,-84.24 -13.16,7.5 -28.38,11.78 -44.61,11.78 -17.56,0 -33.95,-5.01 -47.81,-13.69 -33.44,16.12 -55.6,49.04 -57.79,86.15 -1.59,27.05 -42.72,24.64 -41.13,-2.42 2.79,-47.18 28.75,-89.88 69.08,-114.28 -7.99,-13.47 -12.58,-29.19 -12.58,-45.99 0,-49.83 40.4,-90.24 90.23,-90.24zm0 41.29c-27.03,0 -48.94,21.92 -48.94,48.95 0,27.03 21.91,48.94 48.94,48.94 27.03,0 48.95,-21.91 48.95,-48.94 0,-27.03 -21.91,-48.95 -48.95,-48.95z"></path> </g> </g></svg>
+                    </div>
+                    <span>View</span>
+                  </button>
+                </div>
+              </div>
+        </form>
+      </div>
+    </div>
