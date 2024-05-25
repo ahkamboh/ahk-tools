@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html  class="html">
+  <head>
+    <title>Applyace || Your gateway to admission</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Applyace your ultimate admission companion, Say goodbye to complex processes and paperwork. Effortlessly apply to your dream universities.">
+    <meta name="keywords" content="Applyace">
+    <meta property="og:image" content="https://user-images.githubusercontent.com/123060177/258603013-b4c76455-cc11-487f-aaa1-0f6ed0335003.jpg">
+    <meta property="og:url" content="https://applyaces.com" />
+    <meta property="og:title" content="Applyace || Ultimate admission companion" />
+    <meta property="og:description" content="Applyace your ultimate admission companion, Say goodbye to complex processes and paperwork. Effortlessly apply to your dream universities." />
+    <meta property="twitter:title" content="Applyace || Ultimate admission companion"/>
+    <meta property="twitter:description" content="Applyace your ultimate admission companion, Say goodbye to complex processes and paperwork. Effortlessly apply to your dream universities."/>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;800&display=swap"rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Include Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+
+
+    <%# Form phone field css cdn  %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.min.css">
+    <%# card swiper css cdn  %>
+      <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic/build/ckeditor.css">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  
+    <%# card swiper js cdn %>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <%# Form phone field js cdn %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+      <!-- Include jquerylibrary -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Parsley.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+
+
+<!-- Include the Editor.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <!-- Include the Header tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <!-- Include the List tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+    <!-- Include the Image tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@latest"></script>
+    <!-- Include the Quote tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+    <!-- Include the Checklist tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
+    <!-- Include the Code tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
+    <!-- Include the Link tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
+    <!-- Include the Embed tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+    <!-- Include the Table tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
+    <!-- Include the Delimiter tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>
+    <!-- Include the Warning tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
+    <!-- Include the Attaches tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/attaches@latest"></script>
+    <!-- Include the Marker tool -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
+    <%= favicon_link_tag 'applyace_icon.png' %>
+
+</head>
+ <body class="font-poppins " >
+     <%= render 'home/navbar' %>
+	 
+  <%= yield %>
+
+  <%# ---- Footer ------- %>
+
+
+<footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+
+
+
+</body>
+</html>

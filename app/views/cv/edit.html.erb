@@ -1,0 +1,956 @@
+
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<div data-controller="cv" class="">
+  <div  class="grid grid-cols-8 xl:space-x-4  relative ">
+    <div class="2xl:col-span-4 xl:col-span-3 col-span-8 sm:px-5 ">
+      <div class=" overflow-y-scroll h-screen container-sm mx-auto 2xl:p-12 2xl:pr-1.5 md:pr-6  p-8 resumeform ">
+        <form class="mt-8 space-y-3 resumeformContent" data-cv-target="form" action="/cvs/<%= @cv.id %>" method="patch"  enctype="multipart/form-data"  >
+              <div class="w-full grid place-content-center pb-7">
+                <div class="relative group">
+                  <div class="absolute -right-6 top-0  ">
+                    <svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M11.695 15.117l6.531-6.344L15.5 6l-6.625 6.296 2.82 2.82zM10.27 16.52l-2.828-2.829-.446.446v2.828h2.829l.445-.445zm2.122.707l-1.415 1.414a1 1 0 0 1-.63.29H6.116c-.612.047-1.132-.306-1.085-.917v-4.4a1 1 0 0 1 .29-.63l2.12-2.121.018.017 6.909-6.578a1.6 1.6 0 0 1 2.263 0l3.292 3.338a1.6 1.6 0 0 1 0 2.263l-7.531 7.324z"></path></svg>
+                  </div>
+                  <div id="titleInput" contenteditable="true" class="input-field overflow-hidden whitespace-nowrap w-full text-2xl font-semibold bg-transparent outline-0" data-cv-target="titleInput">Untitled</div>
+                  <div class="inputBottomBorder"></div>
+                </div>
+              </div> 
+              <div class="w-full grid relative pb-7 place-content-center">
+                <label for="photoInput" data-action="click->cv#updateCvPhoto" class="w-full group gap-11  cursor-pointer">
+                  <div class="w-16 h-16 mx-auto relative overflow-hidden rounded-lg flex items-center justify-center hover:bg-blue-100  group-hover:bg-blue-100 transition-colors bg-blue-50">
+                    <% if @cv.cv_image.attached? %>
+                      <div class="h-16 w-16 mb-4 mx-auto" id="dbCvPhoto">
+                        <%= image_tag @cv.cv_image, :class => "inline-block rounded-xl w-full h-full object-cover" %>
+                      </div>                      
+                    <% end %>
+                    <div id="updatedcvPhoto" class="mx-auto hidden">
+                        <%= image_tag("upload.svg",data: { "cv-target": "photoDisplay" } ) %>
+                    </div>
+                  </div>
+                  <div data-cv-target="uploadText" class="font-normal text-xs text-center mt-1 group">Update Image</div>
+                  <input type="file" data-action="change->cv#updateCvPhoto" name="cv_image" id="photoInput" class="hidden" accept="image/*"/>
+                </label>
+                <div class="text-black font-normal text-xs rounded-lg text-center mt-1 ">
+                  <span data-cv-target="deleteText"  data-action="click->cv#deletePhoto" class=" text-red-500 font-normal cursor-pointer hidden">Delete</span>
+                </div>
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="1" class="space-y-3">
+                <div class="font-semibold text-xl text-sky-800">Personal Details</div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                  <div class="w-full">
+                    <label for="firstName" class="md:mt-0 mt-2 font-medium text-gray-700">First Name</label>
+                    <input data-cv-target="input" id="firstName" name="first_name" value="<%= @cv.first_name%>"   placeholder="Daneil" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200  block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="lastName"class="md:mt-0 mt-2 font-medium text-gray-700">Last Name</label>
+                      <input data-cv-target="input" id="lastName" name="last_name" value="<%= @cv.last_name%>" placeholder="Aanderson" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center ">
+                  <div class="w-full">
+                    <label for="jobTitle"class="md:mt-0 mt-2 font-medium text-gray-700">Job Title</label>
+                      <input  data-cv-target="input" id="jobTitle" list="jobTitles" placeholder="Job Title" name="job_title" value="<%= @cv.job_title%>" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    <datalist id="jobTitles">
+                      <option value="AI Ethicist">
+                      <option value="Blockchain Developer">
+                      <option value="Cybersecurity Analyst">
+                      <option value="Digital Strategist">
+                      <option value="E-commerce Specialist">
+                      <option value="Sustainability Analyst">
+                      <option value="Genomic Counselor">
+                      <option value="Energy Engineer">
+                      <option value="Informatics Specialist">
+                      <option value="Marketing Manager">
+                      <option value="Learning Engineer">
+                      <option value="Metaverse Designer">
+                      <option value="Technology Researcher">
+                      <option value="NFT Consultant">
+                      <option value="Computing Scientist">
+                      <option value="Work Coordinator">
+                      <option value="Automation Analyst">
+                      <option value="Media Manager">
+                      <option value="Urban Planner">
+                      <option value="Web Developer">
+                      <option value="Teacher">
+                      <option value="Security Guard">
+                      <option value="Nurse">
+                      <option value="Accountant">
+                      <option value="Chef">
+                      <option value="Carpenter">
+                      <option value="Electrician">
+                      <option value="Plumber">
+                      <option value="Painter">
+                      <option value="Mechanic">
+                      <option value="Librarian">
+                      <option value="Waiter">
+                      <option value="Cleaner">
+                      <option value="Driver">
+                      <option value="Farmer">
+                      <option value="Police Officer">
+                      <option value="Firefighter">
+                      <option value="Paramedic">
+                      <option value="Cashier">
+                    </datalist>
+                  </div>
+                  <div class="w-full">
+                    <label for="phone"class="md:mt-0 mt-2 font-medium text-gray-700">Phone</label>
+                      <input data-cv-target="input" id="phone" placeholder="123-456-7890"  name="phone" value="<%= @cv.phone%>" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                  <div class="w-full">
+                    <label for="email"class="md:mt-0 mt-2 font-medium text-gray-700">Email</label>
+                      <input data-cv-target="input" id="email" name="email" value="<%= @cv.email%>" placeholder="Hello@applyace.com" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                  </div>
+
+                  <div class="w-full "  >
+                    <label for="website" class="md:mt-0 mt-2 font-medium text-gray-700">Website</label>
+                    <div class="w-full flex gap-3 justify-center items-center">
+                      <input data-cv-target="input"  id="website" name="website" value="<%= @cv.website%>"  placeholder="www.applyace.com"  disabled class="placeholder-gray-300  bg-slate-100 cursor-not-allowed focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                      <button data-action="click->cv#websiteoptional" type="button" class=" bg-blue-50  hover:bg-blue-100 p-4  sm:p-3.5 border border-transparent shadow-sm font-medium rounded-lg text-white  h-full flex justify-center items-center  text-center text-base">
+                        <svg  data-cv-target="add" class="" xmlns="http://www.w3.org/2000/svg" width="24" height=  "24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        <svg data-cv-target="delete" class="text-red-600 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                      </button>
+                    </div>
+                  </div>``
+                </div>
+                <div class="w-full">
+                    <label for="location"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                      <input data-cv-target="input" id="location" name="personal_location" value="<%= @cv.personal_location%>" placeholder="Harbanspura Lahore Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                <div class="w-full">
+                    <label for="personalAbout" class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-label="About Info " > About Info</label>
+                    <textarea  data-cv-target="editor" data-cv-id="editor1" id="personalAbout" name="personal_about_info"  rows="4" placeholder="I am Student..."  class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"><%= @cv.personal_about_info %></textarea>
+                     <button class="md:w-fit w-full flex my-2  bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate"  data-cv-button="About Info"
+                        data-cv-label="About Info"  data-cv-id="editor1">
+                        Auto Generate
+                        <%= image_tag("loader.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+                    </button>
+                  </div>
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="2" class="hidden space-y-3">
+                <div class="font-semibold text-xl text-sky-800">Educational Qualification</div>
+                    <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                      <div class="w-full">
+                        <label for="degreeName-1st" class="md:mt-0 mt-2 font-medium text-gray-700" >1st Degree</label>
+                          <input data-cv-target="input" id="degreeName-1st" name="first_education_degree" value="<%= @cv.first_education_degree%>"  placeholder="Bachelor in Computer Science" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    </div>
+                    <div class="w-full">
+                      <label for="instituteName-1st" class="md:mt-0 mt-2 font-medium text-gray-700">Institute</label>
+                        <input data-cv-target="input" id="instituteName-1st" name="first_education_institute" value="<%= @cv.first_education_institute%>" placeholder="Comsat Lahore" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    </div>
+                    </div>
+                    <div class="sm:flex grid sm:gap-5 gap-3 items-center ">
+                      <div class="w-full">
+                        <label for="uniLocation-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                          <input data-cv-target="input" id="uniLocation-1st" name="first_education_location" value="<%= @cv.first_education_location%>" placeholder="1.5 KM Defence Rd،Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                      </div>
+                      <div class="w-full">
+                        <label for="degreeDate-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                          <input data-cv-target="input" id="degreeDate-1st" name="first_education_date" value="<%= @cv.first_education_date%>" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                      </div>
+                    </div>
+                    <div class="w-full">
+                        <label for="uniAbout-1st"class="md:mt-0 mt-2 font-medium text-gray-700">About</label>
+                          <textarea data-cv-target=" input textarea " id="uniAbout-1st" name="first_education_about"  rows="4" placeholder="I got 3.7 CGPA......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"> <%= @cv.first_education_about%> </textarea>
+                     </div>
+                    <div class="sm:flex grid sm:gap-5  gap-3 items-center">
+                      <div class="w-full">
+                        <label for="degreeName-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">2nd Degree</label>
+                          <input data-cv-target="input" id="degreeName-2nd"  name="second_education_degree" value="<%= @cv.second_education_degree%>" placeholder="Phd in Software" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                      </div>
+                    <div class="w-full">
+                      <label for="instituteName-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Institute</label>
+                        <input data-cv-target="input" id="instituteName-2nd" placeholder="Comsat Lahore" name="second_education_institute" value="<%= @cv.second_education_institute%>" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    </div>
+                    </div>
+                    <div class="sm:flex grid sm:gap-5 gap-3 items-center  ">
+                      <div class="w-full">
+                        <label for="uniLocation-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                          <input data-cv-target="input" id="uniLocation-2nd" placeholder="1.5 KM Defence Rd،Lahore,Pakistan"   name="second_education_location" value="<%= @cv.second_education_location%>" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                      </div>
+                      <div class="w-full">
+                        <label for="degreeDate-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                          <input data-cv-target="input" id="degreeDate-2nd" placeholder="Jan 2010-feb 2020"  name="second_education_date" value="<%= @cv.second_education_date%>" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                      </div>
+                    </div>
+                    <div class="w-full">
+                        <label for="uniAbout-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">About</label>
+                          <textarea data-cv-target="input textarea " id="uniAbout-2nd"  name="second_education_about"  rows="4" placeholder="I got 3.7 CGPA......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"> <%= @cv.second_education_about%></textarea>
+                     </div>
+           
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="3" class="hidden space-y-3">
+                <div class="font-semibold text-xl text-sky-800">Work Experience</div>
+                  <div class=" sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="designation-1st" class="md:mt-0 mt-2 font-medium text-gray-700">1st Designation </label>
+                        <input data-cv-target="input"  id="designation-1st"  name ="first_job_designation" placeholder="Manager" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="companyName-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Company</label>
+                      <input data-cv-target="input"  id="companyName-1st" name ="first_job_company" placeholder="Softaims" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  </div>
+                  <div class="items-center sm:flex grid sm:gap-5 gap-3">
+                    <div class="w-full">
+                      <label for="companyLocation-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                        <input data-cv-target="input"  id="companyLocation-1st" name="first_job_location" value="<%= @cv.first_job_location%>" placeholder="DHA Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                    </div>
+                    <div class="w-full">
+                      <label for="companyDate-1st"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                        <input data-cv-target="input" id="companyDate-1st" name="first_job_date" value="<%= @cv.first_job_date%>" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                    </div>
+                  </div>
+                  <div class="w-full"  data-cv-label="About Work Experience" >
+                      <label for="workExperience-1st"class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-target="label">About Work Experience</label>
+                        <textarea data-cv-target="editor" data-cv-id="editor2"  id="workExperience-1st" name="first_job_about_work"  rows="4" placeholder="I have immensely good Experience......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"> <%= @cv.first_job_about_work%></textarea>
+                       <button class="md:w-fit w-full flex my-2 bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate"  data-cv-id="editor2"  data-cv-button="About Work Experience"
+                      data-cv-label="About Work Experience" >
+                        Auto Generate
+                        <%= image_tag("loader.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+                      </button>
+                  </div>
+
+
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="designation-2nd"class="md:mt-0 mt-2 font-medium text-gray-700" >2nd Designation</label>
+                        <input data-cv-target="input" id="designation-2nd" name="second_job_designation" value="<%= @cv.second_job_designation%>" placeholder="Manager" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="companyName-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Company</label>
+                      <input data-cv-target="input"  id="companyName-2nd" name="second_job_company" value="<%= @cv.second_job_company%>" placeholder="Softaims" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  </div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="companyLocation-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                        <input data-cv-target="input"  id="companyLocation-2nd" name="second_job_location" value="<%= @cv.second_job_location%>" placeholder="DHA Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                    </div>
+                    <div class="w-full">
+                      <label for="companyDate-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                        <input data-cv-target="input"  id="companyDate-2nd" name="second_job_date" value="<%= @cv.second_job_date%>" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    </div>
+                  </div>
+                  <div class="w-full">
+                      <label for="workExperience-2nd" class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-label="About Work Experience" >About Work Experience</label>
+                        <textarea data-cv-target="editor" data-cv-id="editor3"   id="workExperience-2nd"  name="second_job_about_work" rows="4" placeholder="I have immensely good Experience......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none">  <%= @cv.second_job_about_work%></textarea>
+                         <button class="md:w-fit w-full flex my-2 bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate" data-cv-id="editor3"  data-cv-button="About Work Experience"
+                          data-cv-label="About Work Experience" >
+                          Auto Generate
+                        <%= image_tag("loader.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+
+                      </button>
+                  </div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="designation-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">3rd Designation</label>
+                        <input data-cv-target="input"  id="designation-3rd" name="third_job_designation" value="<%= @cv.third_job_designation%>" placeholder="Manager" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="companyName-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">Company</label>
+                      <input data-cv-target="input"  id="companyName-3rd" name="third_job_company" value="<%= @cv.third_job_company%>" placeholder="Softaims" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  </div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="companyLocation-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">Location</label>
+                        <input data-cv-target="input"  id="companyLocation-3rd"  name="third_job_location" value="<%= @cv.third_job_location%>" placeholder="DHA Lahore,Pakistan" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                    </div>
+                    <div class="w-full">
+                      <label for="companyDate-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">Date</label>
+                        <input data-cv-target="input"  id="companyDate-3rd" name="third_job_date" value="<%= @cv.third_job_date%>" placeholder="Jan 2010-feb 2020" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    </div>
+                  </div>
+                  <div class="w-full">
+                      <label for="workExperience-3rd"class="md:mt-0 mt-2 font-medium text-gray-700" data-cv-label="About Work Experience" > About Work Experience</label>
+                        <textarea data-cv-target="editor" data-cv-id="editor4"   id="workExperience-3rd" name="third_job_about_work"  rows="4" placeholder="I have immensely good Experience......" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border resize-none"> <%= @cv.third_job_about_work%></textarea>
+                         <button class="md:w-fit w-full flex my-2  bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate" data-cv-id="editor4"  data-cv-button="About Work Experience"
+                          data-cv-label="About Work Experience" >
+                            Auto Generate
+                          <%= image_tag("loader.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+
+                        </button>
+                  </div>
+                  <div  data-cv-target="workAdd">
+                    <!-- form fields generate  by js there-->
+                </div>
+                <!-- form fields generate  button-->
+                <button type="button" data-action="click->cv#workFormAdd" class=" bg-blue-50 hover:bg-blue-100  p-1 border border-transparent shadow-sm font-medium rounded-md text-white w-full flex justify-center items-center  text-center text-base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d45a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="4" class="hidden accent-sky-800 space-y-3">                              
+                <div class="font-semibold text-xl text-sky-800">Profestional Skill</div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                  <div class="w-full">
+                    <label for="skill-1st"class="md:mt-0 mt-2 font-medium text-gray-700">1st skill</label>
+                      <input data-cv-target="input" id="skill-1st" name="first_skill" value="<%= @cv.first_skill%>" placeholder="skill" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                  <div class="w-full">
+                    <label for="skillrange-1">Level <span id="skill-level-1">50%</span></label>
+                    <input  data-action="input->cv#skillHobbyRange"  data-div-id="skillrangeresume-1" data-level-id="skill-level-1"  id="skillrange-1"  type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                  </div>
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                  <div class="w-full">
+                    <label for="skill-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">2nd skill</label>
+                      <input data-cv-target="input" id="skill-2nd" name="second_skill" value="<%= @cv.second_skill%>" placeholder="skill" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                <div class="w-full">
+                  <label for="skillrange-2">Level <span id="skill-level-2">50%</span></label>
+                  <input  data-action="input->cv#skillHobbyRange" data-div-id="skillrangeresume-2" data-level-id="skill-level-2"  id="skillrange-2" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700 ">
+                </div>
+                </div>
+                <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                  <div class="w-full">
+                    <label for="skill-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">3rd skill</label>
+                      <input  data-cv-target="input" id="skill-3rd"   name="third_skill" value="<%= @cv.third_skill%>" placeholder="skill" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                </div>
+                  <div class="w-full">
+                    <label for="skillrange-3">Level <span id="skill-level-3">50%</span></label>
+                    <input data-action="input->cv#skillHobbyRange" data-div-id="skillrangeresume-3" data-level-id="skill-level-3"  id="skillrange-3" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                  </div>
+                </div>
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="5" class="hidden  accent-sky-800 space-y-3">
+              <div class="font-semibold text-xl text-sky-800">Interests Hobbies</div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="hobby-1st"class="md:mt-0 mt-2 font-medium text-gray-700">1st hobby</label>
+                        <input data-cv-target="input" id="hobby-1st" name="first_hobby" value="<%= @cv.first_hobby%>" placeholder="hobby" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="hobbyrange-1">Level <span id="hobby-level-1">50%</span></label>
+                    <input data-action="input->cv#skillHobbyRange" data-div-id="hobbyrangeresume-1" data-level-id="hobby-level-1"  id="hobbyrange-1" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                  </div>
+                  </div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="hobby-2nd"class="md:mt-0 mt-2 font-medium text-gray-700">2nd hobby</label>
+                        <input data-cv-target="input" id="hobby-2nd"  name="second_hobby" value="<%= @cv.second_hobby%>" placeholder="hobby" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="hobbyrange-2">Level <span id="hobby-level-2">50%</span></label>
+                    <input  data-action="input->cv#skillHobbyRange" data-div-id="hobbyrangeresume-2" data-level-id="hobby-level-2"   id="hobbyrange-2" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                  </div>
+                </div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="hobby-3rd"class="md:mt-0 mt-2 font-medium text-gray-700">3rd hobby</label>
+                        <input data-cv-target="input" id="hobby-3rd" name="third_hobby" value="<%= @cv.third_hobby%>" placeholder="hobby" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="hobbyrange-3">Level <span id="hobby-level-3">50%</span></label>
+                    <input data-action="input->cv#skillHobbyRange" data-div-id="hobbyrangeresume-3" data-level-id="hobby-level-3"   id="hobbyrange-3" type="range" class="w-full h-2 bg-gray-200 rounded-lg  cursor-pointer dark:bg-gray-700">
+                  </div>
+                  </div>
+               
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="6" class="hidden  space-y-3">
+                  <div class="font-semibold text-xl text-sky-800">Reference
+                    Details</div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="reference-1st " class="md:mt-0 mt-2 font-medium text-gray-700">1st Reference</label>
+                        <input data-cv-target="input" id="reference-1st" name="first_reference_name" value="<%= @cv.first_reference_name%>" placeholder="Badar munir" class="placeholder-gray-300 focus:ring-blue-200  py-4 focus:border-blue-200  block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  <div class="w-full">
+                    <label for="referencePost-1st" class="md:mt-0 mt-2 font-medium text-gray-700">Reference Post</label>
+                      <input data-cv-target="input"  id="referencePost-1st"  name="first_reference_post" value="<%= @cv.first_reference_post%>" placeholder="CEO Applyace" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                  </div>
+                  </div>
+                  <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                    <div class="w-full">
+                      <label for="referencePhone-1st" class="md:mt-0 mt-2 font-medium text-gray-700">Phone</label>
+                        <input data-cv-target="input"  name="first_reference_phone" value="<%= @cv.first_reference_phone%>" id="referencePhone-1st" placeholder="123-456-7890" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  "/>
+                    </div>
+                    <div class="w-full">
+                      <label for="referenceEmail-1st" class="md:mt-0 mt-2 font-medium text-gray-700" >Email</label>
+                        <input data-cv-target="input" name="first_reference_email" value="<%= @cv.first_reference_email%>"  id="referenceEmail-1st" placeholder="hi@badarmunir.com" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border "/>
+                    </div>
+                  </div>
+              </div>
+              <div data-cv-target="stepfrom" data-stepfrom-value="7" class="hidden space-y-3">
+                  <div class="w-full sm:flex sm:space-y-0 space-y-5   gap-10 items-center">
+                    <div class="w-full">
+                      <label for="fontStyle" class="md:mt-0 mt-2 font-medium text-gray-700">Font Style</label>
+                        <select data-cv-target="selectFont" name="cv_font_style" data-action="change->cv#changeFont" id="fontStyle" class="placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border " >
+                          <option value="" <%= 'selected' if @cv.cv_font_style == ""%>>Default</option>
+                          <option value="Arial, sans-serif" <%= 'selected' if @cv.cv_font_style == 'Arial, sans-serif'%>>Arial</option>
+                          <option value="Poppins" <%= 'selected' if @cv.cv_font_style == 'Poppins'%>>Poppins</option>
+                          <option value="'Times New Roman', serif" <%= 'selected' if @cv.cv_font_style == "'Times New Roman', serif"%>>Times New Roman</option>
+                          <option value="'Courier New', monospace" <%= 'selected' if @cv.cv_font_style == "'Courier New', monospace"%>>Courier New</option>
+                          <option value="Josefin Sans" <%= 'selected' if @cv.cv_font_style == "Josefin Sans"%>>Josefin Sans</option>
+                          <option value="Jost" <%= 'selected' if @cv.cv_font_style == "Jost"%>>Jost</option>
+                          <option value="Verdana, sans-serif" <%= 'selected' if @cv.cv_font_style == "Verdana, sans-serif"%>>Verdana</option>
+                        </select>
+                    </div>
+                    <div class="w-full">
+                      <label for="colorInput" class="relative left-0.5 md:mt-0 mt-2 font-medium text-gray-700">Color</label>            
+                        <input type="color" id="colorInput" name="cv_color" value="<%= @cv.cv_color%>"  data-cv-target="colorInput" data-action="input->cv#changeColor" value="#2c5282" class="placeholder-gray-300 focus:ring-blue-200 py-3.5   focus:border-blue-200 focus:border-2 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border  bg-white h-14">
+                    </div>
+                  </div>            
+              </div>
+              <!-- form buttons  -->
+                <div class=" flex md:flex-row flex-col  w-full justify-between gap-2 pt-1">
+                  <div class="gap-2.5 flex md:flex-row flex-col-reverse  md:w-fit w-full">
+                    <button type="button" data-action="cv#previous" data-cv-target="previous" class="md:w-fit w-full hidden  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl">Previous</button>
+                    <button type="button" data-action="cv#next" data-cv-target="next"class=" md:w-fit w-full text-center  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl ">Next</button>
+                  </div>
+                  <div class="flex md:flex-row flex-col gap-3 md:w-fit w-full">
+                    <button type="submit" data-cv-target="submitBtn" class=" md:w-fit w-full hidden bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  text-center  ">Save</button>
+                    <button type="button" data-cv-target="downloadbtn" class=" md:w-fit w-full hidden bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  text-center  "  data-cv-target="downloadPDF" data-action="click->cv#downloadPDF">Download PDF</button>
+                    <button data-action="click->cv#displayResume"  type="button" class=" md:w-fit w-full bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white text-center xl:hidden  flex gap-2 justify-center items-center ">
+                      <div class="">
+                      <svg fill="#000000" width="20" height="20" viewBox="0 0 846.66 846.66" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style type="text/css">  .fil0 {fill:rgb(255, 255, 255);fill-rule:nonzero}  </style> </defs> <g id="Layer_x0020_1"> <path class="fil0" d="M539.75 794.68c27.15,0 27.15,41.29 0,41.29l-497.47 0c-11.4,0 -20.64,-9.25 -20.64,-20.65l0 -621.69c0,-5.7 2.31,-10.87 6.04,-14.6l162.3 -162.29c4.03,-4.03 9.31,-6.05 14.59,-6.05l466.89 0c11.4,0 20.65,9.25 20.65,20.65l0 361.36c0,27.16 -41.29,27.16 -41.29,0l0 -340.72 -437.7 0 -150.19 150.2 0 592.5 476.82 0zm-351.21 -181.98c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm496.57 238.25c49.84,0 90.24,40.4 90.24,90.24 0,18.1 -5.33,34.95 -14.5,49.07 37.57,24.93 61.47,66.08 64.13,111.2 1.59,27.06 -39.55,29.47 -41.13,2.42 -2.11,-35.69 -22.61,-67.48 -54.13,-84.24 -13.16,7.5 -28.38,11.78 -44.61,11.78 -17.56,0 -33.95,-5.01 -47.81,-13.69 -33.44,16.12 -55.6,49.04 -57.79,86.15 -1.59,27.05 -42.72,24.64 -41.13,-2.42 2.79,-47.18 28.75,-89.88 69.08,-114.28 -7.99,-13.47 -12.58,-29.19 -12.58,-45.99 0,-49.83 40.4,-90.24 90.23,-90.24zm0 41.29c-27.03,0 -48.94,21.92 -48.94,48.95 0,27.03 21.91,48.94 48.94,48.94 27.03,0 48.95,-21.91 48.95,-48.94 0,-27.03 -21.91,-48.95 -48.95,-48.95z"></path> </g> </g></svg>
+                      </div>
+                      <span>View</span>
+                    </button>
+                  </div>
+              </div>
+         </form>
+      </div>
+    </div>
+    <div  data-cv-target="resumeToggle" class="2xl:col-span-4 xl:col-span-5 col-span-8 p-5  bg-blue-950 md:overflow-scroll  overflow-hidden h-screen  xl:block hidden xl:relative absolute z-[10] inset-0 customResumeScroll">
+    <!-- back to form button for resume at mobile  -->
+    <div data-action="click->cv#hideResume" class="w-fit mb-3.5  xl:hidden cursor-pointer items-center flex gap-1 p-2 rounded-lg bg-white hover:bg-gray-200">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#075985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    </div>
+    <!-- progress bar  -->
+    <div class="w-full md:block hidden container-sm mx-auto space-y-2  mb-6">
+      <div  class="flex w-full justify-between px-0.5">
+        <div class="font-bold text-sm text-white">Your Pogress</div>
+        <div class="font-semibold text-sm text-white"><span data-cv-target="barpercentage"></span> to Complete</div>
+    </div>
+    <div class="w-full glass-bg rounded-md p-0.5 ">
+      <div data-cv-target="progress" class="h-2.5 rounded-md bg-gradient-to-r  via-blue-800 to-white from-sky-500 relative">
+      </div>
+    </div>
+  </div>
+  <div class="relative container-sm mx-auto flex justify-center items-center custom-height ">
+      <div class="customScaleDown  md:scale-100 scale-[.45] z-10  rounded-lg  bg-white p-10">
+        <div  data-cv-target="resumeFontchangerAll" id="output-text" class="md:w-full md:h-full w-[994px] h-[1547.4px]   customResumeScroll overflow-y-scroll overflow-x-hidden  bg-white">
+          <!-- cv capture container in which the content change  -->
+          <div data-cv-target="cvCapture"  class="bg-white px-2">
+            <div class="flex p-0.5 gap-10 items-center">
+              <div data-cv-target="imgcontainerHider"  class="w-40 h-32 rounded-full overflow-hidden">
+                  <% if @cv.cv_image.attached? %>
+                  <div class="mb-4 mx-auto" >
+                    <%= image_tag @cv.cv_image, :class => "w-40 h-32 object-cover",  data: { "cv-target": "photoDisplay" } %>
+                  </div>                      
+                  <% end %>
+              </div>
+              <div data-cv-target="resumeheadingsfontchanger" class="flex resumeFont gap-10 w-full  break-words">
+                <div class="w-full">
+                  <h1 data-cv-target="resume"  id="firstNameResume" class="text-5xl font-bold  capitalize  tracking-wider">
+                    Daneil </h1>
+                  <h1 data-cv-target="resume" id="lastNameResume" data-target="cv.textColorChanger" class="text-5xl font-bold   capitalize  tracking-wider text-color-changer  text-sky-800">
+                    Aanderson</h1>
+                </div>
+                <div class="flex justify-start items-end gap-5 w-full pb-2">
+                  <div data-cv-target="resumeheadingsfontchanger"  class="flex gap-5 w-full resumeFont">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                      fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="lucide lucide-chevron-right">
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <h4 data-cv-target="resume"  id="jobTitleResume" class="text-sm -mt-0.5 font-normal w-full">Web Developer</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class=" mt-6 max-w-full">
+              <p data-cv-target="ckEditorContent" data-cv-id="editor1-content" class="text-sm break-words leading-relaxedaboutInput ">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum explicabo quo animi est
+                deleniti modi eligendi iusto vitae earum accusamus sequi accusantium similique placeat iste,
+                enim et dolores aperiam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt dolores,
+                delectus possimus totam dolor, quisquam pariatur ad tempore esse eaque, neque facere inventore
+                id? Iste dolor aperiam consequatur laudantium. Molestiae.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, dolorem sed enim vel 
+                ratione nihil. Quibusdam iste aut, porro quis labore cum esse ex ullam, harum distinctio
+                atque nihil tenetur!
+              </p>
+            </div>
+            <div  data-cv-target="bgChanger" data-cv-col="gridCols" class="grid grid-cols-12 my-5 gap-3 bg-sky-800 bg-changer p-3 text-white">
+              <div class="text-xs flex gap-1 col-span-4 justify-center items-center">
+                <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-phone">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+                <a href="tel:123-456-7890" data-cv-target="resume" id="phoneResume"  class="break-all" >123-456-7890</a>
+              </div>
+              <div class="text-xs flex gap-1 col-span-4 justify-center items-center">
+                <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-mail">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+                <a href="mailto:Hello@applyace.com" data-cv-target="resume" id="emailResume" class="break-all">Hello@applyace.com</a>
+              </div>
+              <div data-cv-target="email" class="text-xs hidden gap-1  col-span-4 justify-center items-center">
+                <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-globe">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" x2="22" y1="12" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+                <a href="https://www.applyaces.com" data-cv-target="resume" id="websiteResume" class="break-all">www.applyaces.com</a>
+              </div>
+              <div class="text-xs flex gap-1 col-span-4 justify-center items-center">
+                <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-map-pin">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+                <div id="locationResume" data-cv-target="resume"  class="break-words" >Harbanspura Lahore Pakistan</div>
+              </div>
+            </div>
+            <div class="w-full h-full">
+            <div class="w-full">
+              <div class="flex gap-10 w-full">
+                <div data-cv-target="resumeheadingsfontchanger" class="resumeFont">
+                  <h1 class="text-2xl font-semibold">Educational<br>Qualification</h1>
+                </div>
+                <div class="py-4 w-full">
+                  <div class="flex w-full gap-5">
+                    <div class=" border-0 border-b-4 border-dotted border-sky-800 w-full"></div>
+                    <div data-cv-target="bgChanger"  class=" p-1.5  rounded-full bg-sky-800 bg-changer grid place-content-center relative top-3 ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-graduation-cap">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-10">
+                <div class=" grid grid-cols-8  w-full py-5 pt-6">
+                  <div class="flex col-span-2 pr-2.5 ">
+                    <div class="pt-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </div>
+                    <div class="w-full">
+                      <div data-cv-target="resumeheadingsfontchanger" class="text-base font-normal resumeFont ">Year</div>
+                      <div data-cv-target="resume" id="degreeDate-1stResume" class="text-sm font-normal  text-gray-500 break-words ">Jan 2010-feb 2021</div>
+                    </div>
+                  </div>
+                  <div class="border-l-2 border-black col-span-6 ">
+                    <div data-cv-target="resumeheadingsfontchanger" class="flex gap-5 resumeFont  items-start  -translate-y-2  -translate-x-[9px]">
+                      <div class="p-1.5 bg-white border-2 shadow-sm rounded-full"></div>
+                      <div   data-cv-target="resume" id="degreeName-1stResume" class="font-normal text-xl relative capitalize break-words -mt-1 ">Enter Your master degree Name
+                      </div>
+                    </div>
+                    <div class="pl-[30px] pb-2">
+                      <div data-cv-target="resumeheadingsfontchanger" class="flex justify-between gap-5 resumeFont ">
+                        <div  data-cv-target="resume" id="instituteName-1stResume" class="font-normal text-sm relative break-words   capitalize">University / Institute Name
+                        </div>
+                        <div   class="flex gap-4  ">
+                          <div  data-cv-target="resume" id="uniLocation-1stResume" class="font-normal text-sm relative break-words  capitalize">Lahore Pakistan </div>
+                          <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="lucide lucide-map-pin">
+                              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                              <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-cv-target="resume" id="uniAbout-1stResume" class="pl-[30px] break-words font-normal leading-relaxed text-sm pb-5">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis enim nobis nostrum
+                      quod tempora voluptate libero aperiam, ea ducimus fugiat voluptas sint natus autem iste et
+                      vitae! lo
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-10 -mt-5">
+                <div class=" grid grid-cols-8 w-full">
+                  <div class="flex col-span-2 pr-2.5">
+                    <div class="pt-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </div>
+                    <div class="w-full">
+                      <div data-cv-target="resumeheadingsfontchanger" class="text-base font-normal resumeFont ">Year</div>
+                      <div data-cv-target="resume" id="degreeDate-2ndResume" class="text-sm font-normal  text-gray-500 break-words">Jan 2010-feb 2021</div>
+                    </div>
+                  </div>
+                  <div class="border-l-2 border-black col-span-6">
+                    <div  data-cv-target="resumeheadingsfontchanger" class="flex gap-5 items-start -translate-y-2 -translate-x-[9px] resumeFont">
+                      <div class="p-1.5 bg-white border-2 shadow-sm rounded-full"></div>
+                      <div  data-cv-target="resume" id="degreeName-2ndResume" class="font-normal text-xl relative break-words capitalize -mt-1">Enter Your master degree Name
+                      </div>
+                    </div>
+                    <div class="pl-[30px] pb-2 ">
+                      <div data-cv-target="resumeheadingsfontchanger"  class="flex justify-between gap-5 resumeFont ">
+                        <div  data-cv-target="resume" id="instituteName-2ndResume" class="font-normal text-sm relative break-words  capitalize">University / Institute Name
+                        </div>
+                        <div  class="flex gap-4 ">
+                          <div data-cv-target="resume" id="uniLocation-2ndResume" class="font-normal text-sm relative break-words capitalize ">Lahore Pakistan </div>
+                          <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="lucide lucide-map-pin">
+                              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                              <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-cv-target="resume" id="uniAbout-2ndResume" class="pl-[30px] font-normal leading-relaxed text-sm break-words">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis qui distinctio earum dolorum fugit ad, amet quos! Exercitationem laboriosam soluta quo iste iusto, consequuntur deleniti. Labore corrupti inventore id expedita.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class=" w-full mt-5">
+              <div class="flex gap-10 w-full">
+                <div  data-cv-target="resumeheadingsfontchanger" class="resumeFont">
+                  <h1  class="text-2xl font-semibold">Work<br>Experience</h1>
+                </div>
+                <div class="py-4 w-full ">
+                  <div class="flex w-full gap-5 ">
+                    <div class=" border-0 border-b-4 border-dotted border-sky-800 w-full"></div>
+                    <div  data-cv-target="bgChanger"  class=" p-2 rounded-full bg-sky-800 bg-changer grid place-content-center relative top-3 ">
+                      <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-briefcase">
+                        <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-10">
+                <div class=" grid grid-cols-8  w-full py-5">
+                  <div class="flex col-span-2 pr-2.5">
+                    <div class="pt-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </div>
+                    <div class="w-full">
+                      <div data-cv-target="resumeheadingsfontchanger" class="text-base font-normal resumeFont ">Year</div>
+                      <div data-cv-target="resume" id="companyDate-1stResume" class="text-sm font-normal  text-gray-500 break-words">Jan 2010-feb 2021</div>
+                    </div>
+                  </div>
+                  <div class="border-l-2 border-black col-span-6 ">
+                    <div data-cv-target="resumeheadingsfontchanger" class="flex gap-5 items-start -translate-y-2   resumeFont  -translate-x-[9px]">
+                      <div class="p-1.5 bg-white border-2 shadow-sm rounded-full  "></div>
+                      <div data-cv-target="resume" id="designation-1stResume" class="font-normal text-xl relative capitalize break-words -mt-1 ">Enter Your designation Name
+                      </div>
+                    </div>
+                    <div class="pl-[30px] gap-5 pb-2">
+                      <div  data-cv-target="resumeheadingsfontchanger"  class="flex justify-between  resumeFont   gap-5">
+                        <div data-cv-target="resume" id="companyName-1stResume" class="font-normal text-sm relative  capitalize break-words ">Campany / Institute Name
+                        </div>
+                        <div class="flex gap-4">
+                          <div  data-cv-target="resume" id="companyLocation-1stResume" class="font-normal text-sm relative  capitalize break-words ">Lahore Pakistan </div>
+                          <div class="">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="lucide lucide-map-pin">
+                              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                              <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div  data-cv-target="ckEditorContent" data-cv-id="editor2-content" class="pl-[30px] font-normal leading-relaxed text-sm break-words">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis enim nobis nostrum
+                      quod tempora voluptate libero aperiam, ea ducimus fugiat voluptas sint natus autem iste et
+                      vitae!
+                      Vitae, vel! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil ratione atque vitae
+                      officiis laboriosam itaque pariatur velit temporibus quisquam sed minima, animi iure, rerum vel
+                      consequuntur, modi magnam culpa illum.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-10 -mt-5">
+                <div class=" grid grid-cols-8 w-full">
+                  <div class="flex col-span-2 pr-2.5">
+                    <div class="pt-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </div>
+                    <div class="w-full">
+                      <div data-cv-target="resumeheadingsfontchanger" class="text-base font-normal resumeFont ">Year</div>
+                      <div data-cv-target="resume" id="companyDate-2ndResume"  class="text-sm font-normal  text-gray-500 overflow-hidden break-words">Jan 2010-feb 2021</div>
+                    </div>
+                  </div>
+                  <div class="border-l-2 border-black col-span-6 pt-5 ">
+                    <div data-cv-target="resumeheadingsfontchanger" class="flex gap-5 resumeFont items-start -translate-y-2  -translate-x-[9px]">
+                      <div class="p-1.5 bg-white border-2 shadow-sm rounded-full  "></div>
+                      <div  data-cv-target="resume" id="designation-2ndResume" class="font-normal text-xl relative  capitalize  break-words -mt-1 ">Enter Your  designation  Name
+                      </div>
+                    </div>
+                    <div class="pl-[30px] pb-2">
+                      <div  data-cv-target="resumeheadingsfontchanger"  class="flex justify-between gap-5 resumeFont">
+                        <div data-cv-target="resume" id="companyName-2ndResume"  class="font-normal text-sm relative  capitalize  break-words">Campany / Institute Name
+                        </div>
+                        <div class="flex gap-4">
+                          <div data-cv-target="resume" id="companyLocation-2ndResume" class="font-normal text-sm relative  capitalize  break-words ">Lahore Pakistan </div>
+                          <div class="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-map-pin">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                          </svg>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div  data-cv-target="ckEditorContent" data-cv-id="editor3-content"  class="pl-[30px] font-normal leading-relaxed text-sm  break-words ">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis enim nobis nostrum
+                      quod tempora voluptate libero aperiam, ea ducimus fugiat voluptas sint natus autem iste et
+                      vitae!
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis enim nobis nostrum
+                      quod tempora voluptate libero aperiam, ea ducimus fugiat voluptas sint natus autem iste et
+                      vitae!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-10">
+              <div class="grid grid-cols-8 w-full">
+                <div class="flex col-span-2 pr-2.5">
+                  <div class="pt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                      fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="lucide lucide-chevron-right">
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                  </div>
+                  <div class="w-full">
+                    <div data-cv-target="resumeheadingsfontchanger" class="text-base font-normal resumeFont ">Year</div>
+                    <div data-cv-target="resume" id="companyDate-3rdResume"  class="text-sm font-normal  text-gray-500 break-words">Jan 2010-feb 2021</div>
+                  </div>
+                </div>
+                <div class="border-l-2 border-black col-span-6 pt-5  ">
+                  <div  data-cv-target="resumeheadingsfontchanger" class="flex gap-5 items-start resumeFont  -translate-y-2  -translate-x-[9px]">
+                    <div class="p-1.5 bg-white border-2 shadow-sm rounded-full  "></div>
+                    <div data-cv-target="resume" id="designation-3rdResume" class="font-normal text-xl relative  capitalize  break-words -mt-1">Enter Your designation Name</div>
+                  </div>
+                  <div class="pl-[30px] pb-2">
+                    <div  data-cv-target="resumeheadingsfontchanger"  class="flex justify-between gap-5 resumeFont  ">
+                      <div data-cv-target="resume"  id="companyName-3rdResume" class="font-normal text-sm relative  capitalize break-words ">Campany / Institute Name
+                      </div>
+                      <div class="flex gap-4">
+                        <div  data-cv-target="resume" id="companyLocation-3rdResume"  class="font-normal text-sm relative  capitalize break-words ">Lahore Pakistan </div>
+                        <div class="">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-map-pin">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                          </svg>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-cv-target="ckEditorContent" data-cv-id="editor4-content"  class="pl-[30px] font-normal leading-relaxed text-sm break-words">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facilis enim nobis nostrum
+                    quod
+                    tempora voluptate libero aperiam, ea ducimus fugiat voluptas sint natus autem iste et vitae!
+                    Vitae,
+                    vel!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="addworkResume"  data-cv-target="workResume">
+              <!-- add educational qualifications go here -->
+          </div>
+            <div class="flex justify-between gap-5  mt-10 ">
+              <div class=" w-full ">
+                <h1 data-cv-target="resumeheadingsfontchanger" class=" text-2xl font-semibold resumeFont ">Profestional</h1>
+                <div class="py-5 w-full">
+                  <div class="flex w-full gap-2  items-center -mt-5">
+                    <h1 data-cv-target="resumeheadingsfontchanger" class=" text-2xl font-semibold resumeFont text-center ">Skill</h1>
+                    <div class="flex w-full items-center gap-2">
+                      <div class=" border-0 border-b-4 border-dotted border-sky-800 w-full"></div>
+                      <div data-cv-target="bgChanger"  class=" p-2 rounded-full bg-sky-800 bg-changer grid place-content-center relative  ">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" fill="none"
+                          stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="lucide lucide-settings">
+                          <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full pr-5">
+                  <div class="flex items-center w-full">
+                    <div data-cv-target="resume" id="skill-1stResume" class="w-52 break-words">Ms Office</div>
+                    <div class="h-2 relative overflow-hidden rounded-2xl border border-gray-500 w-full">
+                      <div id="skillrangeresume-1" class="skillrangeresume h-2 absolute inset-0 bg-black w-11/12"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center w-full">
+                    <div data-cv-target="resume" id="skill-2ndResume" class="w-52 break-words">Dev ops</div>
+                    <div class="h-2 relative overflow-hidden rounded-2xl border border-gray-500 w-full">
+                      <div id="skillrangeresume-2"class="skillrangeresume h-2 absolute inset-0 bg-black w-1/4"></div>
+                    </div>
+                  </div>
+                  <div  class="flex items-center w-full">
+                    <div  data-cv-target="resume" id="skill-3rdResume" class="w-52 break-words">Developer</div>
+                    <div class="h-2 relative overflow-hidden rounded-2xl border border-gray-500 w-full">
+                      <div id="skillrangeresume-3" class="skillrangeresume h-2 absolute inset-0 bg-black w-1/2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" w-full">
+                <h1 data-cv-target="resumeheadingsfontchanger" class=" text-2xl font-semibold resumeFont ">Interests</h1>
+                <div class="py-5 w-full">
+                  <div class="flex w-full gap-2  items-center -mt-5">
+                    <h1 data-cv-target="resumeheadingsfontchanger" class=" text-2xl font-semibold resumeFont text-center ">Hobbies</h1>
+                    <div class="flex w-full items-center gap-2">
+                      <div class=" border-0 border-b-4 border-dotted border-sky-800 w-full"></div>
+                      <div data-cv-target="bgChanger"  class=" p-2  rounded-full bg-sky-800 bg-changer grid place-content-center relative  ">
+                        <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                          fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-heart">
+                          <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pr-5">
+                  <div class="flex w-full items-center">
+                    <div class="flex gap-3 items-center w-52">
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-chevron-right">
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </div>
+                      <div  data-cv-target="resume" id="hobby-1stResume" class="break-words">Riding</div>
+                    </div>
+                    <div class="h-2 relative overflow-hidden rounded-2xl border border-gray-500 w-full">
+                      <div id="hobbyrangeresume-1" class="h-2 absolute inset-0 bg-black w-3/4"></div>
+                    </div>
+                  </div>
+                  <div class="flex w-full items-center  ">
+                    <div class="flex gap-3 items-center w-52">
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-chevron-right">
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </div>
+                      <div data-cv-target="resume" id="hobby-2ndResume" class="break-words">Traveling</div>
+                    </div>
+                    <div class="h-2 relative overflow-hidden rounded-2xl border border-gray-500 w-full">
+                      <div  id="hobbyrangeresume-2"  class="h-2 absolute inset-0 bg-black w-1/4"></div>
+                    </div>
+                  </div>
+                  <div class="flex w-full items-center ">
+                    <div class="flex gap-3 items-center w-52">
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-chevron-right">
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </div>
+                      <div data-cv-target="resume" id="hobby-3rdResume" class="break-words">Writing</div>
+                    </div>
+                    <div class="h-2 relative overflow-hidden rounded-2xl border border-gray-500 w-full">
+                      <div id="hobbyrangeresume-3"  class="h-2 absolute inset-0 bg-black w-10/12"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" w-full">
+                <h1 data-cv-target="resumeheadingsfontchanger" class=" text-2xl font-semibold resumeFont ">Reference</h1>
+                <div class="py-5 w-full">
+                  <div class="flex w-full gap-2  items-center -mt-5">
+                    <h1 data-cv-target="resumeheadingsfontchanger" class=" text-2xl font-semibold resumeFont text-center ">Details</h1>
+                    <div class="flex w-full items-center gap-2">
+                      <div class=" border-0 border-b-4 border-dotted border-sky-800 w-full"></div>
+                      <div data-cv-target="bgChanger"  class=" p-2  rounded-full bg-sky-800 bg-changer grid place-content-center relative  ">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" fill="none"
+                          stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="lucide lucide-refresh-ccw">
+                          <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                          <path d="M3 3v5h5" />
+                          <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                          <path d="M16 16h5v5" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full pb-3 break-words">
+                  <div data-cv-target="resumeheadingsfontchanger" class="flex items-center resumeFont">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                      fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="lucide lucide-chevron-right">
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <div   data-cv-target="resume"   id="reference-1stResume" class="text-base font-normal  ">Badar munir</div>
+                  </div>
+                  <div data-cv-target="resume"  id="referencePost-1stResume" class="text-xs font-normal  text-gray-500 pl-4 ">CEO of Applyace</div>
+                  <div data-cv-target="resume"  id="referencePhone-1stResume" class="text-xs font-normal  text-gray-500 pl-4 ">0309481000</div>
+                  <div data-cv-target="resume"  id="referenceEmail-1stResume" class="text-xs font-normal  text-gray-500 pl-4 ">applyace.io@gmail.com</div>
+                </div>
+              </div>
+            </div>
+            
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
