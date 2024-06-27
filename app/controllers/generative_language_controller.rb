@@ -1,0 +1,2 @@
+class GenerativeLanguageController < ApplicationController
+end
