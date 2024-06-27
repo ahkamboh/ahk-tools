@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'crud/practice'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,4 +15,6 @@ Rails.application.routes.draw do
   get 'cvmain', to:"cv#main"
   get 'temp1', to:"cv#temp1"
   get 'temp2', to:"cv#temp2"
+
+  post '/generate_content', to: 'generative_language#generate_content'
 end
