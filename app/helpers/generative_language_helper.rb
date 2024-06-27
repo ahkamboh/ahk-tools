@@ -1,0 +1,2 @@
+module GenerativeLanguageHelper
+end
