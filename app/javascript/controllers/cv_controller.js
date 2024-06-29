@@ -1134,55 +1134,6 @@ CKEditor(editorTarget, contentTarget, cvId) {
     });
   }
 
-//   generate(event) {
-//     event.preventDefault();
-//     const clickedButton = event.currentTarget;
-//     const loader = clickedButton.querySelector("[data-cv-target='loader']");
-//     loader.classList.remove("hidden");
-
-//     const label = clickedButton.dataset.cvLabel;
-//     const cvId = clickedButton.dataset.cvId;
-
-//     const editorIndex = this.ckEditorInstances.findIndex(instance => instance.id === cvId);
-
-//     if (editorIndex !== -1 && this.ckEditorInstances[editorIndex]) {
-//       const inputText = this.ckEditorInstances[editorIndex].editor.getData();
-
-//       const prompt = inputText
-//         ? `I'm Creating CV for Fang company, help me write ${label} of max 3 lines by utilizing this text: ${inputText}`
-//         : `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 3 lines) that highlights the key accomplishments and skills relevant to this position`;
-
-//       fetch("https://api.openai.com/v1/completions", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-          
-//           Authorization: "Bearer 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", // OpenAI API key
-//         },
-//         body: JSON.stringify({
-//           model: "gpt-3.5-turbo-instruct", 
-//           prompt,
-//           temperature: 0.8,
-//           max_tokens: 100,
-//         }),
-//       })
-//         .then((response) => response.json())
-//         .then((data) => {
-//           const generatedText = data.choices[0].text;
-//           const cleanedText = generatedText.replace(/\./g, '').replace(/<br\s*\/?>/g, '');
-
-//           this.ckEditorInstances[editorIndex].editor.setData(cleanedText.trim());
-//         })
-//         .catch((error) => {
-//           console.error("Error:", error);
-//         })
-//         .finally(() => {
-//           loader.classList.add("hidden");
-//         });
-//     } else {
-//       loader.classList.add("hidden");
-//     }
-// }
 
 
 generate(event) {
