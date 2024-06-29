@@ -3519,3 +3519,308 @@ Started GET "/components/style.css" for ::1 at 2024-06-29 21:14:03 +0500
   
 ActionController::RoutingError (No route matches [GET] "/components/style.css"):
   
+Started GET "/temp1" for ::1 at 2024-06-29 21:26:42 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 254.0ms | Allocations: 94919)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 255.5ms | Allocations: 95807)
+  Rendered home/_navbar.html.erb (Duration: 2.7ms | Allocations: 2712)
+  Rendered home/_footer.html.erb (Duration: 2.0ms | Allocations: 1989)
+  Rendered layout layouts/application.html.erb (Duration: 291.3ms | Allocations: 132827)
+Completed 200 OK in 299ms (Views: 294.3ms | ActiveRecord: 0.0ms | Allocations: 136707)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 21:26:43 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 21:27:48 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.4ms | Allocations: 1201)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1266)
+  Rendered home/_navbar.html.erb (Duration: 2.0ms | Allocations: 2485)
+  Rendered home/_footer.html.erb (Duration: 7.4ms | Allocations: 1289)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 13103)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.0ms | Allocations: 13406)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 21:27:48 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 21:28:15 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 21:28:54 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 2.3ms | Allocations: 1093)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1158)
+  Rendered home/_navbar.html.erb (Duration: 4.4ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 1.3ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 12999)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.0ms | Allocations: 13255)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 21:28:54 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/temp1" for ::1 at 2024-06-29 21:30:49 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 111.2ms | Allocations: 52776)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 113.4ms | Allocations: 53663)
+  Rendered home/_navbar.html.erb (Duration: 3.3ms | Allocations: 2757)
+  Rendered home/_footer.html.erb (Duration: 2.7ms | Allocations: 1989)
+  Rendered layout layouts/application.html.erb (Duration: 213.7ms | Allocations: 90625)
+Completed 200 OK in 227ms (Views: 216.9ms | ActiveRecord: 0.0ms | Allocations: 94505)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 21:30:49 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/blog" for ::1 at 2024-06-29 21:31:25 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/blog"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 21:31:25 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+[dotenv] Set [36mAPI_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/temp1" for ::1 at 2024-06-29 22:21:09 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 252.8ms | Allocations: 95033)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 254.7ms | Allocations: 95920)
+  Rendered home/_navbar.html.erb (Duration: 2.5ms | Allocations: 2712)
+  Rendered home/_footer.html.erb (Duration: 2.2ms | Allocations: 1989)
+  Rendered layout layouts/application.html.erb (Duration: 288.0ms | Allocations: 132709)
+Completed 200 OK in 297ms (Views: 291.0ms | ActiveRecord: 0.0ms | Allocations: 136588)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:21:10 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:21:30 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/contactpage" for ::1 at 2024-06-29 22:24:18 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/contactpage"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:26:47 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 3.8ms | Allocations: 2538)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 5.8ms | Allocations: 3350)
+  Rendered home/_navbar.html.erb (Duration: 2.7ms | Allocations: 2677)
+  Rendered home/_footer.html.erb (Duration: 2.2ms | Allocations: 1742)
+  Rendered layout layouts/application.html.erb (Duration: 44.9ms | Allocations: 38765)
+Completed 200 OK in 48ms (Views: 46.6ms | ActiveRecord: 0.0ms | Allocations: 39821)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:26:48 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:27:43 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 3.2ms | Allocations: 2538)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 4.6ms | Allocations: 3326)
+  Rendered home/_navbar.html.erb (Duration: 2.5ms | Allocations: 2675)
+  Rendered home/_footer.html.erb (Duration: 2.0ms | Allocations: 1742)
+  Rendered layout layouts/application.html.erb (Duration: 31.5ms | Allocations: 38680)
+Completed 200 OK in 34ms (Views: 33.2ms | ActiveRecord: 0.0ms | Allocations: 39739)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:27:44 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:32:10 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 4.4ms | Allocations: 2538)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 5.7ms | Allocations: 3323)
+  Rendered home/_navbar.html.erb (Duration: 2.7ms | Allocations: 2675)
+  Rendered home/_footer.html.erb (Duration: 1.7ms | Allocations: 1742)
+  Rendered layout layouts/application.html.erb (Duration: 48.0ms | Allocations: 41335)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 0.0ms | Allocations: 42392)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:32:11 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:32:23 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:33:19 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 2.3ms | Allocations: 1109)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1177)
+  Rendered home/_navbar.html.erb (Duration: 3.4ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 0.9ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 50.8ms | Allocations: 37797)
+Completed 200 OK in 52ms (Views: 51.5ms | ActiveRecord: 0.0ms | Allocations: 38074)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:33:20 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:33:20 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:33:33 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.8ms | Allocations: 1089)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1157)
+  Rendered home/_navbar.html.erb (Duration: 1.9ms | Allocations: 2485)
+  Rendered home/_footer.html.erb (Duration: 1.2ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 12780)
+Completed 200 OK in 15ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 13039)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:33:33 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:33:48 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.3ms | Allocations: 1094)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1162)
+  Rendered home/_navbar.html.erb (Duration: 2.1ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 1.1ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 35231)
+Completed 200 OK in 31ms (Views: 30.6ms | ActiveRecord: 0.0ms | Allocations: 35490)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:33:48 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:33:59 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 2.0ms | Allocations: 1094)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1169)
+  Rendered home/_navbar.html.erb (Duration: 2.3ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 1.0ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 12815)
+Completed 200 OK in 15ms (Views: 14.8ms | ActiveRecord: 0.0ms | Allocations: 13073)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:33:59 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:34:34 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:36:14 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 3.1ms | Allocations: 2538)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 4.2ms | Allocations: 3324)
+  Rendered home/_navbar.html.erb (Duration: 2.5ms | Allocations: 2677)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1742)
+  Rendered layout layouts/application.html.erb (Duration: 53.4ms | Allocations: 41369)
+Completed 200 OK in 56ms (Views: 54.5ms | ActiveRecord: 0.0ms | Allocations: 42428)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:36:14 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:37:27 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:37:32 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 3.1ms | Allocations: 1109)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1177)
+  Rendered home/_navbar.html.erb (Duration: 3.5ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 1.2ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 39.6ms | Allocations: 35309)
+Completed 200 OK in 41ms (Views: 40.4ms | ActiveRecord: 0.0ms | Allocations: 35586)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:37:32 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:37:41 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 2.8ms | Allocations: 1094)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1162)
+  Rendered home/_navbar.html.erb (Duration: 3.7ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 62.8ms | Allocations: 37748)
+Completed 200 OK in 64ms (Views: 63.5ms | ActiveRecord: 0.0ms | Allocations: 38006)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:37:42 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for ::1 at 2024-06-29 22:40:11 +0500
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.8ms | Allocations: 1094)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1162)
+  Rendered home/_navbar.html.erb (Duration: 3.8ms | Allocations: 2497)
+  Rendered home/_footer.html.erb (Duration: 1.4ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 12821)
+Completed 200 OK in 22ms (Views: 21.4ms | ActiveRecord: 0.0ms | Allocations: 13079)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 22:40:11 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  

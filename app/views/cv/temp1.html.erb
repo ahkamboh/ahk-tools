@@ -1,5 +1,8 @@
 
 <div data-controller="cv" class=" xl:pt-20  pt-12">
+  <!-- Example HTML where you embed the API key securely -->
+<div data-api-key="<%= ENV['API_KEY'] %>"></div>
+
   <div  class="grid grid-cols-8 xl:space-x-4  relative ">
     <%= render 'cv/cvform' %>
     <div data-cv-target="resumeToggle" class="2xl:col-span-4 xl:col-span-5 col-span-8 p-5  bg-blue-950 md:overflow-scroll overflow-hidden h-screen  xl:block hidden xl:relative absolute z-[10] inset-0 customResumeScroll" print-display>

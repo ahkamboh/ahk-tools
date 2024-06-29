@@ -1135,30 +1135,30 @@ CKEditor(editorTarget, contentTarget, cvId) {
   }
 
 
-
 generate(event) {
     event.preventDefault();
+    const apiKey = document.querySelector('[data-api-key]').dataset.apiKey;
     const clickedButton = event.currentTarget;
     const loader = clickedButton.querySelector("[data-cv-target='loader']");
     loader.classList.remove("hidden");
     const label = clickedButton.dataset.cvLabel;
     const cvId = clickedButton.dataset.cvId;
     const editorIndex = this.ckEditorInstances.findIndex(instance => instance.id === cvId);
-  
+
     // Collect job information
     const jobInfo = document.querySelector("#jobTitle").value;
-  
+
     // Collect all degree and institute information
     const degreeElements = document.querySelectorAll("[degreeValue]");
     const instituteElements = document.querySelectorAll("[instituteValue]");
     let degrees = Array.from(degreeElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
     let institutes = Array.from(instituteElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
-  
+
     let prompt;
     const defaultJobInfo = "Software Engineer";
     const defaultDegree = "Bachelor's in Computer Science";
     const defaultInstitute = "XYZ University";
-  
+
     if (degrees.length > 0 && institutes.length > 0) {
       const degreeInfo = degrees.join(', '); // Join all degrees
       const instituteInfo = institutes.join(', '); // Join all institutes
@@ -1169,12 +1169,11 @@ generate(event) {
       alert("You haven't provided Job Title or Degree and Institute information. A default CV section will be generated.");
       prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) job title is ${defaultJobInfo}, Degree ${defaultDegree}, and institute ${defaultInstitute}`;
     }
-  
+
     if (editorIndex !== -1 && this.ckEditorInstances[editorIndex]) {
-      const apiKey = 'AIzaSyC-IHRSLmAL645a2zbXo3ngz0C7XsnkRJM';
       const apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
-  
-      fetch(`${apiEndpoint}?key=${apiKey}`, {
+
+      fetch(`${apiEndpoint}?key=${apiKey}`, {  // Accessing API key from environment variable
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1203,5 +1202,6 @@ generate(event) {
       loader.classList.add("hidden");
     }
   }
+
   
 }
