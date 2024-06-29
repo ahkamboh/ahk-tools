@@ -1155,10 +1155,7 @@ generate(event) {
     let institutes = Array.from(instituteElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
 
     let prompt;
-    const defaultJobInfo = "Software Engineer";
-    const defaultDegree = "Bachelor's in Computer Science";
-    const defaultInstitute = "XYZ University";
-
+   
     if (degrees.length > 0 && institutes.length > 0) {
       const degreeInfo = degrees.join(', '); // Join all degrees
       const instituteInfo = institutes.join(', '); // Join all institutes
