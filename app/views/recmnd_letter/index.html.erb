@@ -1,0 +1,396 @@
+<!-- dont remove form name class  like this "resumeformContent" ,"resumeform" and "customResumeScroll" bcz connected with resume css  etc  -->
+<div data-controller="recommendLetter" class="overflow-hidden xl:pt-20  pt-12" >
+  <div class="grid grid-cols-8 xl:space-x-4  relative ">
+    <div class="2xl:col-span-4 xl:col-span-3 col-span-8 sm:px-5 ">
+      <div class=" overflow-y-scroll h-screen container-sm mx-auto 2xl:p-12 2xl:pr-1.5 md:pr-6  p-8 resumeform">
+        <%= form_with  method: :post, html: { class: "mt-8 space-y-3 resumeformContent" } do |f| %>
+          <div class="w-full grid place-content-center pb-7">
+            <div class="relative">
+              <div class="absolute -right-6 top-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M11.695 15.117l6.531-6.344L15.5 6l-6.625 6.296 2.82 2.82zM10.27 16.52l-2.828-2.829-.446.446v2.828h2.829l.445-.445zm2.122.707l-1.415 1.414a1 1 0 0 1-.63.29H6.116c-.612.047-1.132-.306-1.085-.917v-4.4a1 1 0 0 1 .29-.63l2.12-2.121.018.017 6.909-6.578a1.6 1.6 0 0 1 2.263 0l3.292 3.338a1.6 1.6 0 0 1 0 2.263l-7.531 7.324z"></path></svg>
+              </div>
+              <!-- dont replace  this editable content div with input field just use innerhtml or innnertext value  to store data in db  -->
+              <div id="titleInput" contenteditable="true" class="input-field overflow-hidden whitespace-nowrap w-full text-2xl font-semibold bg-transparent outline-0" data-recommendLetter-target="titleInput">Untitled</div>
+              <div class="inputBottomBorder"></div>
+                <!-- -------------  -->
+            </div>
+          </div>
+          <div class="w-full grid relative pb-7 place-content-center">
+            <%= f.label :photoInput, class: 'w-full group gap-11 cursor-pointer', data: { action: "change->recommendLetter#updatePhoto" } do %>
+              <div class="w-16 h-16 relative overflow-hidden rounded-lg flex items-center justify-center hover:bg-blue-100 group-hover:bg-blue-100 transition-colors bg-blue-50">
+                <%= image_tag("upload.svg", data: { "recommendLetter-target": "photoDisplay" }) %>
+              </div>
+              <div data-recommendLetter-target="uploadText" class="font-normal text-[9px] text-center mt-1 group">Upload logo</div>
+              <%= f.file_field :photoInput, accept: 'image/*', class: 'hidden', data: { action: "change->recommendLetter#updatePhoto" }, id: 'photoInput' %>
+            <% end %>
+            <div class="text-black font-normal text-xs rounded-lg text-center mt-1 ">
+              <span data-recommendLetter-target="deleteText"  data-action="click->recommendLetter#deletePhoto" class=" text-red-500 font-normal cursor-pointer hidden">Delete</span>
+          </div>
+          </div>
+          <div class="pb-5">
+            <div class="tab-container bg-blue-50">
+              <button type="button"  data-action="click->recommendLetter#defaultmode"  class="tab tab-1 ">Default</button>
+              <button type="button" data-action="click->recommendLetter#letterdisplay" class="tab tab-2" >Custom</button>
+              <div class="indicator" data-recommendLetter-target="btnIndicaterleft" ></div>
+          </div>
+        </div>
+          <div data-recommendLetter-target="stepfrom" data-stepfrom-value="1" class="space-y-2">
+            <div class="font-semibold text-xl text-sky-800">Your Institute</div>
+            <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+              <div class="w-full">
+                <%= f.label :yourInstitute, 'Name', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                <%= f.text_field :yourInstitute, placeholder: 'University Of Management & Technology',data: { "recommendLetter-target": "letterInput" }, class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border' %>
+              </div>
+              <div class="w-full">
+                <%= f.label :yourInstituteLocation, 'Location', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                <%= f.text_field :yourInstituteLocation, placeholder: 'C-II Block C 2 Phase 1 Johar Town, Lahore, Punjab 54770', data: { "recommendLetter-target": "letterInput" }, class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border' %>
+              </div>
+            </div>
+           <div data-recommendLetter-target="letterFormHide" class="space-y-3">
+            <div class="font-semibold text-xl text-sky-800"> Recipient Details</div>
+            <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+              <div class="w-full">
+                <%= f.label :nameofRecipient, 'Name', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                <%= f.text_field :nameofRecipient, id: 'nameofRecipient', placeholder: 'Muhammad Israr', data: { "recommendLetter-target": "letterInput" }, class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border' %>
+              </div>
+              <div class="w-full">
+                <%= f.label :recipientDesignation, 'Designation', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                <%= f.text_field :recipientDesignation, id: 'recipientDesignation', list: 'recipientdesignation', placeholder: 'Professor', data: { "recommendLetter-target": "letterInput" }, class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border' %>
+              </div>
+            <datalist id="recipientdesignation">
+              <option value="Professor">
+              <option value="Assistant Professor">
+              <option value="Associate Professor">
+              <option value="Lecturer">
+              <option value="Dean">
+              <option value="Head of Department">
+              <option value="Teacher">
+              <option value="Principal">
+              <option value="Vice Principal">
+              <option value="School Counselor">
+              <option value="Librarian">
+              <option value="Admissions Officer">
+              <option value="Registrar">
+              <option value="Academic Advisor">
+              <option value="Guidance Counselor">
+              <option value="Curriculum Developer">
+              <option value="Education Consultant">
+              <option value="Student Affairs Coordinator">
+              <option value="Career Services Coordinator">
+              <option value="Special Education Teacher">
+              <option value="ESL Teacher">
+              <option value="School Psychologist">
+              <option value="School Nurse">
+              <option value="Education Coordinator">
+              <option value="Tutor">
+              <option value="Test Prep Instructor">
+              <option value="Research Assistant">
+              <option value="Graduate Assistant">
+              <option value="Teaching Assistant">
+              <option value="Lab Technician">
+              <option value="School Administrator">
+              <option value="Education Policy Analyst">
+              <option value="Curriculum Specialist">
+              <option value="Educational Technologist">
+              <option value="College Counselor">
+              <option value="Art Teacher">
+              <option value="Music Teacher">
+              <option value="Physical Education Teacher">
+              <option value="Drama Teacher">
+            </datalist>
+            </div>
+            <div class="w-full">
+              <%= f.label :instituteRecipient, 'Institute', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+              <%= f.text_field :instituteRecipient, id: 'instituteRecipient', placeholder: 'Comsat Lahore', data: { "recommendLetter-target": "letterInput" }, class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border' %>
+            </div>
+            <div class="w-full">
+              <%= f.label :mailRecipient, 'Email', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+              <%= f.email_field :mailRecipient, id: 'mailRecipient', placeholder: 'admission@applyace.com', data: { "recommendLetter-target": "letterInput" }, class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border' %>
+            </div>
+            </div> 
+          </div>
+          <div data-recommendLetter-target="stepfrom" data-stepfrom-value="2" class="hidden space-y-2">
+            <!-- letterEditor container -->
+            <div data-recommendLetter-target="letterEditorShow" class="space-y-3 hidden ">
+              <div class="font-semibold text-xl text-sky-800 ">Letter Editor</div>
+              <div data-recommendLetter-target="ckEditor" data-cv-id="editorG"  class="">
+                <p><strong>[Your Name]</strong></p>
+                <p><em>[Your Title/Position]</em></p>
+                <p>[Your Organization/Institution]</p>
+                <p>[Date]</p>
+                <br>
+                <p>To Whom It May Concern,</p>
+                <br>
+                <p>I am writing to highly recommend <strong>[Student's Full Name]</strong> for <strong>[Purpose of Recommendation]</strong>.
+                    [He/She/They] [has/have] been [my student/under my supervision] for [number of years/semesters] and [I have/I've] been
+                    consistently impressed with [his/her/their] [mention specific areas or qualities, e.g., academics, leadership, etc.].
+                </p>
+                <br>
+                <p><strong>[Student's Full Name]</strong> is a <strong>[mention notable attributes, e.g., diligent, creative, etc.]</strong>
+                    individual who <strong>[mention an accomplishment or quality]</strong>. [He/She/They] [mention another relevant quality
+                    or accomplishment]. [Student's Full Name] is not only [mention strengths], but also [mention character trait or skill].
+                    I am confident [he/she/they] will excel in [mention the intended opportunity, e.g., college, scholarship, internship,
+                    etc.] and bring valuable contributions to [his/her/their] chosen path.
+                </p>
+                <br>
+                <p>I wholeheartedly recommend <strong>[Student's Full Name]</strong> and believe [he/she/they] will be a valuable addition
+                    to [mention the intended institution, program, etc.].
+                </p>
+                <br>
+                <p>Sincerely,</p>
+                 <br>
+                <p><strong>[Your Name]</strong></p>
+                <p><em>[Your Title/Position]</em></p>
+                <p>[Your Organization/Institution]</p>
+                <p>[Your Contact Information]</p>
+              </div>
+              <button class="md:w-fit w-full md:justify-start justify-center   mt-2  mb-1  items-center flex bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white  text-center" data-action="click->cv#generate"  data-cv-button="About Info"
+                data-cv-label="About Info" data-action="click->cv#generate" data-cv-id="editorG">
+                 <div class="">Auto Generate</div>
+                <%= image_tag("https://cdn.pixabay.com/animation/2023/05/02/04/29/04-29-06-428_512.gif" , alt:"Loading", class:"w-5 h-5 ml-2 hidden  "  , data:{cv_target:"loader"}) %>
+            </button>
+            </div>
+            <!-- Default form field show container -->
+            <div data-recommendLetter-target="letterFormHide" class="space-y-3">
+              <div class="font-semibold text-xl text-sky-800 ">Your Details</div>
+              <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                <div class="w-full">
+                  <%= f.label :nameofYour, 'Name', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                  <%= f.text_field :nameofYour, placeholder: 'Muhammad Israr', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput" }, id: 'nameofYour' %>
+                </div>
+                <div class="w-full">
+                  <%= f.label :YourDesignation, 'Designation', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                  <%= f.text_field :YourDesignation, placeholder: 'Professor', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput" }, id: 'YourDesignation', list: 'recipientdesignation' %>
+                </div>
+              <datalist id="Yourdesignation">
+                <option value="Professor">
+                <option value="Assistant Professor">
+                <option value="Associate Professor">
+                <option value="Lecturer">
+                <option value="Dean">
+                <option value="Head of Department">
+                <option value="Teacher">
+                <option value="Principal">
+                <option value="Vice Principal">
+                <option value="School Counselor">
+                <option value="Librarian">
+                <option value="Admissions Officer">
+                <option value="Registrar">
+                <option value="Academic Advisor">
+                <option value="Guidance Counselor">
+                <option value="Curriculum Developer">
+                <option value="Education Consultant">
+                <option value="Student Affairs Coordinator">
+                <option value="Career Services Coordinator">
+                <option value="Special Education Teacher">
+                <option value="ESL Teacher">
+                <option value="School Psychologist">
+                <option value="School Nurse">
+                <option value="Education Coordinator">
+                <option value="Tutor">
+                <option value="Test Prep Instructor">
+                <option value="Research Assistant">
+                <option value="Graduate Assistant">
+                <option value="Teaching Assistant">
+                <option value="Lab Technician">
+                <option value="School Administrator">
+                <option value="Education Policy Analyst">
+                <option value="Curriculum Specialist">
+                <option value="Educational Technologist">
+                <option value="College Counselor">
+                <option value="Art Teacher">
+                <option value="Music Teacher">
+                <option value="Physical Education Teacher">
+                <option value="Drama Teacher">
+            </datalist>
+              </div>
+              <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+                <div class="w-full">
+                  <%= f.label :yourPhone, 'Phone no', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                  <%= f.telephone_field :yourPhone, placeholder: '+92678567890', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput" }, id: 'yourPhone' %>
+                </div>
+                <div class="w-full">
+                  <%= f.label :yourMail, 'Email', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                  <%= f.email_field :yourMail, placeholder: 'admission@applyace.com', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput" }, id: 'yourMail' %>
+                </div>
+              </div>
+              <div class="w-full">
+                <%= f.label :presentYear, 'Present Year', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                <%= f.text_field :presentYear, placeholder: 'Feb 5, 2022 to 2024', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput" }, id: 'presentYear' %>
+              </div>
+              <div class="w-full">
+                <%= f.label :yourStudent, 'Your Student', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                <%= f.text_field :yourStudent, placeholder: 'Badar Munir', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput" }, id: 'yourStudent' %>
+              </div>
+            </div>
+          </div>
+          <!-- Signature container -->
+          <div data-recommendLetter-target="stepfrom" data-stepfrom-value="3" class="hidden space-y-3" >
+            <div class="font-semibold text-xl text-sky-800">Add Signature</div>
+            <canvas class=" bg-blue-50 shadow-md  sm:w-[300px] w-full rounded-lg" data-recommendLetter-target="signatureCanvas" width="300"  height="200"></canvas>
+            <div class="sm:flex grid sm:gap-5 gap-3 items-center">
+              <button type="button" data-action="click->recommendLetter#addSignature" class="bg-gradient-to-br to-blue-950 sm:w-fit w-full from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white  text-center ">Add Signature</button>
+              <button type="button" data-action="click->recommendLetter#clearSignature" class="bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium  sm:w-fit w-full rounded-lg text-white  text-center ">Clear Signature</button>
+            </div>
+            <div class="">
+              <%= f.label :fileInput, 'Upload Signature Image', class: 'block mb-2 text-sm font-medium' %>
+              <%= f.file_field :fileInput, accept: 'image/*', class: 'rounded-lg relative m-0 block w-full min-w-0 flex-auto cursor-pointer border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] font-normal leading-[2.15] text-blue-950 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:px-3 file:py-[0.32rem] file:text-blue-950 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gradient-to-bl focus:border-primary focus:text-blue-950 focus:shadow-te-primary focus:outline-none dark:border-blue-950 dark:text-gray-300 dark:file:bg-gradient-to-br file:to-blue-950 file:from-sky-800 dark:file:text-neutral-100 dark:focus:border-primary', data: { "recommendLetter-target": "fileInput", action: "change->recommendLetter#upload" }, id: 'fileInput' %>
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">SVG, PNG, JPG(MAX. 100x100px)</p>
+            </div>
+           
+              <div class="sm:flex w-full grid sm:gap-5 gap-3 items-center">
+                <div class="w-full">
+                  <%= f.label :typeSignature, 'Type Signature', class: 'text-sm font-medium' %>
+                  <%= f.text_field :typeSignature, placeholder: 'Type Your Signature here', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput", action: "input->recommendLetter#imgreset" }, id: 'typeSignature' %>
+                </div>
+                <div class="w-full">
+                  <%= f.label :fontStyle, 'Sign Font', class: 'md:mt-0 mt-2 font-medium text-gray-700' %>
+                  <%= f.select :fontStyle, [['Sign Type 1', 'option1'], ['Sign Type 2', 'option2']], {}, { class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { action: "change->recommendLetter#changeContent" } } %>
+                </div>
+            </div>
+            <div class="w-full">
+              <%= f.label :letterDate, 'Date', class: 'text-sm font-medium' %>
+              <%= f.text_field :letterDate, placeholder: 'April 5,2023', class: 'placeholder-gray-300 focus:ring-blue-200 py-4 focus:border-blue-200 block w-full p-3 sm:text-sm border-gray-200 rounded-lg border', data: { "recommendLetter-target": "letterInput", action: "input->coverletter#imgreset" }, id: 'letterDate' %>
+            </div>
+        </div>
+
+          <!-- form buttons  -->
+          <div class=" flex md:flex-row flex-col  w-full justify-between gap-2 pt-1">
+            <div class="gap-2.5 flex md:flex-row flex-col-reverse  md:w-fit w-full">
+              <button type="button" data-action="recommendLetter#previous" data-recommendLetter-target="previous" class="md:w-fit w-full hidden  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl">Previous</button>
+              <button type="button" data-action="recommendLetter#next" data-recommendLetter-target="next"class=" md:w-fit w-full text-center  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl ">Next</button>
+            </div>
+            <div class="flex md:flex-row flex-col gap-3 md:w-fit w-full">
+              <button type="button" data-recommendLetter-target="downloadbtn" class=" md:w-fit w-full hidden bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white  text-center  "  data-recommendLetter-target="downloadPDF" data-action="click->recommendLetter#downloadPDF">Download PDF</button>
+              <button data-action="click->recommendLetter#displayLetter"  type="button" class=" md:w-fit w-full bg-gradient-to-br to-blue-950  from-sky-800 hover:bg-gradient-to-bl  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white text-center xl:hidden  flex gap-2 justify-center items-center ">
+                 <div class="">
+                 <svg fill="#000000" width="20" height="20" viewBox="0 0 846.66 846.66" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style type="text/css">  .fil0 {fill:rgb(255, 255, 255);fill-rule:nonzero}  </style> </defs> <g id="Layer_x0020_1"> <path class="fil0" d="M539.75 794.68c27.15,0 27.15,41.29 0,41.29l-497.47 0c-11.4,0 -20.64,-9.25 -20.64,-20.65l0 -621.69c0,-5.7 2.31,-10.87 6.04,-14.6l162.3 -162.29c4.03,-4.03 9.31,-6.05 14.59,-6.05l466.89 0c11.4,0 20.65,9.25 20.65,20.65l0 361.36c0,27.16 -41.29,27.16 -41.29,0l0 -340.72 -437.7 0 -150.19 150.2 0 592.5 476.82 0zm-351.21 -181.98c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm496.57 238.25c49.84,0 90.24,40.4 90.24,90.24 0,18.1 -5.33,34.95 -14.5,49.07 37.57,24.93 61.47,66.08 64.13,111.2 1.59,27.06 -39.55,29.47 -41.13,2.42 -2.11,-35.69 -22.61,-67.48 -54.13,-84.24 -13.16,7.5 -28.38,11.78 -44.61,11.78 -17.56,0 -33.95,-5.01 -47.81,-13.69 -33.44,16.12 -55.6,49.04 -57.79,86.15 -1.59,27.05 -42.72,24.64 -41.13,-2.42 2.79,-47.18 28.75,-89.88 69.08,-114.28 -7.99,-13.47 -12.58,-29.19 -12.58,-45.99 0,-49.83 40.4,-90.24 90.23,-90.24zm0 41.29c-27.03,0 -48.94,21.92 -48.94,48.95 0,27.03 21.91,48.94 48.94,48.94 27.03,0 48.95,-21.91 48.95,-48.94 0,-27.03 -21.91,-48.95 -48.95,-48.95z"></path> </g> </g></svg>
+                </div>
+                <span>View</span>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div  data-recommendLetter-target="letterToggle" class=" 2xl:col-span-4 xl:col-span-5 col-span-8 p-5  bg-blue-950 md:overflow-scroll overflow-hidden h-screen  xl:block hidden xl:relative absolute  inset-0 customResumeScroll">
+      <!-- back to form button for recommendLetter at mobile  -->
+      <div data-action="click->recommendLetter#hideLetter" class="w-fit mb-3.5  xl:hidden cursor-pointer items-center flex gap-1 p-2 rounded-lg bg-white hover:bg-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#075985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </div>
+
+          <!-- progress bar  -->
+          <div class="w-full md:block hidden container-sm mx-auto space-y-2  mb-6">
+            <div  class="flex w-full justify-between px-0.5">
+              <%# <div class="font-bold text-sm text-white">Your Pogress</div> %>
+        </div>
+          <div class="w-full glass-bg rounded-lg px-0.5 flex items-center gap-1">
+            <div data-recommendLetter-target="progress" class="h-3 transition rounded-md bg-gradient-to-r  via-blue-800 to-white from-sky-500 relative"></div>
+            <div class="font-semibold text-xs text-white"><span data-recommendLetter-target="barpercentage"></span></div>
+          </div>
+      </div>
+      
+      <div class="relative container-sm mx-auto flex justify-center items-center custom-height ">
+        <div class="customScaleDown  md:scale-100 scale-[.45] z-10  rounded-lg  bg-white p-16">
+          <div id="output-text" class="md:w-full md:h-full w-[794px] h-[1047.4px]   customResumeScroll overflow-y-scroll overflow-x-hidden  bg-white">
+            <!-- recommendLetter capture container in which the content change  -->
+            <div data-recommendLetter-target="recommendLetterCapture"  class="bg-white space-y-5 px-2 ">
+                <div class="text-center  text-base font-semibold tracking-wider">Letter of Recommendation</div>
+              <div data-recommendLetter-target="removeclass"  class=" grid-cols-5 p-0.5 space-x-4 items-center ">
+                <div   class=" col-span-1 w-full flex justify-center items-center">
+                  <div data-recommendLetter-target="imgcontainerHider" class="w-32 h-24 overflow-hidden hidden">
+                   <%= image_tag("", class:"w-24 h-24 object-contain" ,data: { "recommendLetter-target": "photoDisplay" } ) %>
+                 </div>
+                </div>
+                <div data-recommendLetter-target="removeclass" class="col-span-4 text-center tracking-wider break-all">
+                  <div data-recommendLetter-target="letterTag"  id="yourInstituteLetter1" class="text-xl font-bold  capitalize">University of Management & Technology</div>
+                  <div data-recommendLetter-target="letterTag"  id="yourInstituteLocationLetter1" class="text-sm font-normal capitalize  tracking-wider ">C-II Block C 2 Phase 1 Johar Town, Lahore, Punjab 54770</div>
+                </div>
+              </div>
+              <!-- defaultContent -->
+              <div data-recommendLetter-target="defaultContent"  class="space-y-3.5">
+                <div class="space-y-1 py-5">
+                  <div data-recommendLetter-target="letterTag"  id="nameofRecipientLetter1" class="text-base break-all font-semibold">[Name of Recipient]</div>
+                  <div data-recommendLetter-target="letterTag"  id="recipientDesignationLetter1" class="text-base break-all">[Designation of Recipient]</div>
+                  <div data-recommendLetter-target="letterTag"  id="instituteRecipientLetter1" class="text-base break-all">[Institute of Recipient]</div>
+                  <div data-recommendLetter-target="letterTag"  id="mailRecipientLetter1" class="text-base break-all">[E-Mail]</div>
+                </div>
+                <div  class="text-base break-all font-bold">To Whom It May Concern</div>
+                <div class="">
+                  My name is <span class="break-all" data-recommendLetter-target="letterTag"  id="nameofYourLetter1"  >_____________________ [Your Name]</span> 
+                  and proud to offer my recommendation
+                  of <span class="break-all" data-recommendLetter-target="letterTag"  id="yourStudentLetter1">_____________________ [Student’s Name] </span>
+                  to whom I have personally known for 
+                  <span class="break-all" data-recommendLetter-target="letterTag"  id="presentYearLetter1" > ___ </span> years
+                  as the Student's <span  class="break-all" data-recommendLetter-target="letterTag"  id="YourDesignationLetter2" >professor</span> at
+                  <span class="break-all" data-recommendLetter-target="letterTag"  id="yourInstituteLetter2" > _____________________ [Name of School]</span>.
+                </div>
+                <div class=""> 
+                  During my relationship with 
+                  <span class="break-all" data-recommendLetter-target="letterTag"  id="yourStudentLetter2">_____________________[Student’s Name]</span>
+                  I have experienced an individual who shows up earlier than asked, works hard, and carries 
+                  themselves in a polite, respectable manner. In addition, 
+                  <span class="break-all" data-recommendLetter-target="letterTag"  id="yourStudentLetter3">_____________________ [Student’s Name]</span> 
+                  is a devout student who has always presented themselves with levelheadedness and grace.
+                </div>
+                <div class="">
+                  If you have any requests or questions do not hesitate to contact me.
+                </div>
+                <div id="" class="text-base  break-all font-semibold py-5">Best,</div>
+                <div class="">
+                  <div data-recommendLetter-target="letterTag"  id="nameofYourLetter2" class="text-base break-all">[Your Full Name]</div>
+                  <div data-recommendLetter-target="letterTag"  id="YourDesignationLetter1" class="text-base break-all">[Your Designation]</div>
+                  <div data-recommendLetter-target="letterTag"  id="yourMailLetter1" class="text-base break-all">[Your E-Mail]</div>
+                  <div data-recommendLetter-target="letterTag"  id="yourPhoneLetter1" class="text-base break-all">[Your Phone No]</div>
+                </div>
+              </div>
+                 <!-- -------------- -->
+
+               <!-- customContentContent -->
+              <div data-recommendLetter-target="customContent" class="hidden">
+                <div data-recommendLetter-target="ckEditorContent" id="ckContentdisplay" class="break-all">
+                  <p><strong>[Your Name]</strong></p>
+                  <p><em>[Your Title/Position]</em></p>
+                  <p>[Your Organization/Institution]</p>
+                  <p>[Date]</p>
+                  <br>
+                  <p>To Whom It May Concern,</p>
+                  <br>
+                  <p>I am writing to highly recommend <strong>[Student's Full Name]</strong> for <strong>[Purpose of Recommendation]</strong>.
+                      [He/She/They] [has/have] been [my student/under my supervision] for [number of years/semesters] and [I have/I've] been
+                      consistently impressed with [his/her/their] [mention specific areas or qualities, e.g., academics, leadership, etc.].
+                  </p>
+                  <br>
+                  <p><strong>[Student's Full Name]</strong> is a <strong>[mention notable attributes, e.g., diligent, creative, etc.]</strong>
+                      individual who <strong>[mention an accomplishment or quality]</strong>. [He/She/They] [mention another relevant quality
+                      or accomplishment]. [Student's Full Name] is not only [mention strengths], but also [mention character trait or skill].
+                      I am confident [he/she/they] will excel in [mention the intended opportunity, e.g., college, scholarship, internship,
+                      etc.] and bring valuable contributions to [his/her/their] chosen path.
+                  </p>
+                   <br>
+                  <p>I wholeheartedly recommend <strong>[Student's Full Name]</strong> and believe [he/she/they] will be a valuable addition
+                      to [mention the intended institution, program, etc.].
+                  </p>
+                   <br>
+                  <p>Sincerely,</p>
+                   <br>
+                  <p><strong>[Your Name]</strong></p>
+                  <p><em>[Your Title/Position]</em></p>
+                  <p>[Your Organization/Institution]</p>
+                  <p>[Your Contact Information]</p>
+                </div>
+              </div>
+              <div class="">
+                <%= image_tag("", class:"w-28 h-28 hidden object-contain " ,data: { "recommendLetter-target": "signatureImage" } ) %>
+                <div data-recommendLetter-target="signcontainer"  class="signatureFont1">
+                    <div class=" text-4xl capitalize break-all" data-recommendLetter-target="letterTag" id="typeSignatureLetter1">Signature _____________________</div>
+                </div>
+              </div>
+               <div data-recommendLetter-target="letterTag"  id="letterDateLetter1" class="text-base break-all">[Date]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
