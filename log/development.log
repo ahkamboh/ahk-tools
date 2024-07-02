@@ -3824,3 +3824,221 @@ Started GET "/components/style.css" for ::1 at 2024-06-29 22:40:11 +0500
   
 ActionController::RoutingError (No route matches [GET] "/components/style.css"):
   
+[dotenv] Set [36mAPI_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mAPI_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mAPI_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mAPI_KEY[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:23:24 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 438.9ms | Allocations: 116178)
+  Rendered home/_navbar.html.erb (Duration: 2.6ms | Allocations: 2690)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1688)
+  Rendered layout layouts/application.html.erb (Duration: 472.6ms | Allocations: 154436)
+Completed 200 OK in 490ms (Views: 479.4ms | ActiveRecord: 0.0ms | Allocations: 158309)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:23:24 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:24:16 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:25:12 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:26:07 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:31:07 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 18648)
+  Rendered home/_navbar.html.erb (Duration: 3.7ms | Allocations: 2680)
+  Rendered home/_footer.html.erb (Duration: 1.6ms | Allocations: 1636)
+  Rendered layout layouts/application.html.erb (Duration: 57.7ms | Allocations: 58397)
+Completed 200 OK in 60ms (Views: 58.8ms | ActiveRecord: 0.0ms | Allocations: 59461)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:31:07 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started POST "/your_url" for ::1 at 2024-06-29 23:31:13 +0500
+  
+ActionController::RoutingError (No route matches [POST] "/your_url"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:31:14 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 17038)
+  Rendered home/_navbar.html.erb (Duration: 2.7ms | Allocations: 2498)
+  Rendered home/_footer.html.erb (Duration: 1.2ms | Allocations: 1151)
+  Rendered layout layouts/application.html.erb (Duration: 21.6ms | Allocations: 28412)
+Completed 200 OK in 22ms (Views: 22.0ms | ActiveRecord: 0.0ms | Allocations: 28710)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:31:14 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started POST "/your_url" for ::1 at 2024-06-29 23:31:23 +0500
+  
+ActionController::RoutingError (No route matches [POST] "/your_url"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:31:23 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 16910)
+  Rendered home/_navbar.html.erb (Duration: 2.4ms | Allocations: 2498)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1147)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 28263)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.0ms | Allocations: 28522)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:31:23 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:31:27 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started POST "/your_url" for ::1 at 2024-06-29 23:31:42 +0500
+  
+ActionController::RoutingError (No route matches [POST] "/your_url"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:31:42 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 16892)
+  Rendered home/_navbar.html.erb (Duration: 2.6ms | Allocations: 2499)
+  Rendered home/_footer.html.erb (Duration: 1.0ms | Allocations: 1148)
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 28267)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.0ms | Allocations: 28526)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:31:42 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:33:04 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 19217)
+  Rendered home/_navbar.html.erb (Duration: 2.9ms | Allocations: 2678)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1635)
+  Rendered layout layouts/application.html.erb (Duration: 64.8ms | Allocations: 57212)
+Completed 200 OK in 67ms (Views: 66.5ms | ActiveRecord: 0.0ms | Allocations: 58270)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:33:04 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started POST "/recmnd_letter/index" for ::1 at 2024-06-29 23:33:10 +0500
+  
+ActionController::RoutingError (No route matches [POST] "/recmnd_letter/index"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-29 23:33:10 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 16959)
+  Rendered home/_navbar.html.erb (Duration: 2.1ms | Allocations: 2498)
+  Rendered home/_footer.html.erb (Duration: 1.1ms | Allocations: 1147)
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 28312)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms | Allocations: 28589)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-29 23:33:10 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-30 09:21:07 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 19139)
+  Rendered home/_navbar.html.erb (Duration: 3.7ms | Allocations: 2682)
+  Rendered home/_footer.html.erb (Duration: 2.8ms | Allocations: 1636)
+  Rendered layout layouts/application.html.erb (Duration: 57.2ms | Allocations: 58461)
+Completed 200 OK in 60ms (Views: 58.7ms | ActiveRecord: 0.0ms | Allocations: 59516)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-30 09:21:07 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-30 09:22:58 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 19155)
+  Rendered home/_navbar.html.erb (Duration: 4.9ms | Allocations: 2682)
+  Rendered home/_footer.html.erb (Duration: 2.8ms | Allocations: 1636)
+  Rendered layout layouts/application.html.erb (Duration: 56.5ms | Allocations: 57257)
+Completed 200 OK in 59ms (Views: 58.0ms | ActiveRecord: 0.0ms | Allocations: 58312)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-30 09:22:58 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-30 09:26:07 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 19148)
+  Rendered home/_navbar.html.erb (Duration: 3.3ms | Allocations: 2682)
+  Rendered home/_footer.html.erb (Duration: 1.8ms | Allocations: 1636)
+  Rendered layout layouts/application.html.erb (Duration: 48.3ms | Allocations: 57298)
+Completed 200 OK in 51ms (Views: 49.8ms | ActiveRecord: 0.0ms | Allocations: 58353)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-30 09:26:07 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter/index" for ::1 at 2024-06-30 09:27:23 +0500
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 19175)
+  Rendered home/_navbar.html.erb (Duration: 3.0ms | Allocations: 2682)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1636)
+  Rendered layout layouts/application.html.erb (Duration: 48.7ms | Allocations: 57177)
+Completed 200 OK in 52ms (Views: 50.5ms | ActiveRecord: 0.0ms | Allocations: 58232)
+
+
+Started GET "/components/style.css" for ::1 at 2024-06-30 09:27:23 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/components/style.css" for ::1 at 2024-06-30 09:28:55 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
