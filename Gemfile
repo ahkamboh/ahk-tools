@@ -77,3 +77,4 @@ end
 
 gem 'tailwindcss-rails'
 gem 'dotenv-rails', groups: [:development, :t]
+gem 'dotenv-rails'
