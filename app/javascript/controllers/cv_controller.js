@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
        // Add an event listener for beforeunload event
       //  window.addEventListener("beforeunload", this.beforeUnloadHandler);
-    this.CKEditorAll();
+    this.CKEditorAll();  
     window.onload = function () {
       const inputFields = document.querySelectorAll("[data-cv-target=input]");
       const textareaFields = document.querySelectorAll("[data-cv-target~='textarea']");
@@ -1135,70 +1135,70 @@ CKEditor(editorTarget, contentTarget, cvId) {
   }
 
 
-generate(event) {
-    event.preventDefault();
-    const apiKey = document.querySelector('[data-api-key]').dataset.apiKey;
-    const clickedButton = event.currentTarget;
-    const loader = clickedButton.querySelector("[data-cv-target='loader']");
-    loader.classList.remove("hidden");
-    const label = clickedButton.dataset.cvLabel;
-    const cvId = clickedButton.dataset.cvId;
-    const editorIndex = this.ckEditorInstances.findIndex(instance => instance.id === cvId);
+// generate(event) {
+//     event.preventDefault();
+//     const apiKey = document.querySelector('[data-api-key]').dataset.apiKey;
+//     const clickedButton = event.currentTarget;
+//     const loader = clickedButton.querySelector("[data-cv-target='loader']");
+//     loader.classList.remove("hidden");
+//     const label = clickedButton.dataset.cvLabel;
+//     const cvId = clickedButton.dataset.cvId;
+//     const editorIndex = this.ckEditorInstances.findIndex(instance => instance.id === cvId);
 
-    // Collect job information
-    const jobInfo = document.querySelector("#jobTitle").value;
+//     // Collect job information
+//     const jobInfo = document.querySelector("#jobTitle").value;
 
-    // Collect all degree and institute information
-    const degreeElements = document.querySelectorAll("[degreeValue]");
-    const instituteElements = document.querySelectorAll("[instituteValue]");
-    let degrees = Array.from(degreeElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
-    let institutes = Array.from(instituteElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
+//     // Collect all degree and institute information
+//     const degreeElements = document.querySelectorAll("[degreeValue]");
+//     const instituteElements = document.querySelectorAll("[instituteValue]");
+//     let degrees = Array.from(degreeElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
+//     let institutes = Array.from(instituteElements).map(el => el.value).filter(Boolean); // Get values and filter out empty ones
 
-    let prompt;
+//     let prompt;
    
-    if (degrees.length > 0 && institutes.length > 0) {
-      const degreeInfo = degrees.join(', '); // Join all degrees
-      const instituteInfo = institutes.join(', '); // Join all institutes
-      prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) Degree ${degreeInfo} and institute ${instituteInfo}`;
-    } else if (jobInfo) {
-      prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) job title is ${jobInfo}`;
-    } else {
-      alert("You haven't provided Job Title or Degree and Institute information. A default CV section will be generated.");
-      prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) job title is ${defaultJobInfo}, Degree ${defaultDegree}, and institute ${defaultInstitute}`;
-    }
+//     if (degrees.length > 0 && institutes.length > 0) {
+//       const degreeInfo = degrees.join(', '); // Join all degrees
+//       const instituteInfo = institutes.join(', '); // Join all institutes
+//       prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) Degree ${degreeInfo} and institute ${instituteInfo}`;
+//     } else if (jobInfo) {
+//       prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) job title is ${jobInfo}`;
+//     } else {
+//       alert("You haven't provided Job Title or Degree and Institute information. A default CV section will be generated.");
+//       prompt = `I'm creating a CV for Fang company. Please help me write a brief ${label} (up to 5 lines) that highlights the key accomplishments and skills relevant to this position (don't generate (*,[],#,{}) or any kind of symbol generate text plain) job title is ${defaultJobInfo}, Degree ${defaultDegree}, and institute ${defaultInstitute}`;
+//     }
 
-    if (editorIndex !== -1 && this.ckEditorInstances[editorIndex]) {
-      const apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+//     if (editorIndex !== -1 && this.ckEditorInstances[editorIndex]) {
+//       const apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
-      fetch(`${apiEndpoint}?key=${apiKey}`, {  // Accessing API key from environment variable
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
-        })
-      })
-        .then(response => response.json())
-        .then(data => {
-          const generatedText = data.candidates[0].content.parts[0].text;
-          const cleanedText = generatedText.replace(/\./g, '').replace(/<br\s*\/?>/g, '');
-          this.ckEditorInstances[editorIndex].editor.setData(cleanedText.trim());
-        })
-        .catch(error => {
-          console.error("Error:", error);
-        })
-        .finally(() => {
-          loader.classList.add("hidden");
-        });
-    } else {
-      loader.classList.add("hidden");
-    }
-  }
+//       fetch(`${apiEndpoint}?key=${apiKey}`, {  // Accessing API key from environment variable
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           contents: [{
+//             parts: [{
+//               text: prompt
+//             }]
+//           }]
+//         })
+//       })
+//         .then(response => response.json())
+//         .then(data => {
+//           const generatedText = data.candidates[0].content.parts[0].text;
+//           const cleanedText = generatedText.replace(/\./g, '').replace(/<br\s*\/?>/g, '');
+//           this.ckEditorInstances[editorIndex].editor.setData(cleanedText.trim());
+//         })
+//         .catch(error => {
+//           console.error("Error:", error);
+//         })
+//         .finally(() => {
+//           loader.classList.add("hidden");
+//         });
+//     } else {
+//       loader.classList.add("hidden");
+//     }
+//   }
 
   
 }
