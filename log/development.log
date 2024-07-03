@@ -4286,3 +4286,7 @@ Started GET "/components/style.css" for ::1 at 2024-07-03 11:00:29 +0500
   
 ActionController::RoutingError (No route matches [GET] "/components/style.css"):
   
+Started GET "/contactpage" for ::1 at 2024-07-03 12:54:50 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/contactpage"):
+  
