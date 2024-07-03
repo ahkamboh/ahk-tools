@@ -4551,3 +4551,37 @@ Started GET "/components/style.css" for ::1 at 2024-07-03 20:16:16 +0500
   
 ActionController::RoutingError (No route matches [GET] "/components/style.css"):
   
+Started GET "/blog" for ::1 at 2024-07-03 20:35:17 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/blog"):
+  
+Started GET "/cvmain" for ::1 at 2024-07-03 20:37:16 +0500
+Processing by CvController#main as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/main.html.erb within layouts/application
+  Rendered cv/main.html.erb within layouts/application (Duration: 5.2ms | Allocations: 4105)
+  Rendered home/_navbar.html.erb (Duration: 2.0ms | Allocations: 2231)
+  Rendered home/_footer.html.erb (Duration: 1.1ms | Allocations: 1269)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 41755)
+Completed 200 OK in 37ms (Views: 36.9ms | ActiveRecord: 0.0ms | Allocations: 42542)
+
+
+Started GET "/components/style.css" for ::1 at 2024-07-03 20:37:16 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/" for ::1 at 2024-07-03 20:37:21 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 4053)
+  Rendered home/_navbar.html.erb (Duration: 2.8ms | Allocations: 2052)
+  Rendered home/_footer.html.erb (Duration: 1.0ms | Allocations: 762)
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | Allocations: 15059)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms | Allocations: 15522)
+
+
+Started GET "/components/style.css" for ::1 at 2024-07-03 20:37:21 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
