@@ -18,73 +18,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;800&display=swap"rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
-    <!-- Include Select2 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-
-
-
+	  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/ambiance.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/base16-dark.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/3024-night.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/dracula.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/monokai.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/tomorrow-night.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"rel="stylesheet" />
     <%# Form phone field css cdn  %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.min.css">
     <%# card swiper css cdn  %>
-      <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic/build/ckeditor.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic/build/ckeditor.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  
-    <%# card swiper js cdn %>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <%# Form phone field js cdn %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
-      <!-- Include jquerylibrary -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include Parsley.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
-
-
-<!-- Include the Editor.js library -->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/display/placeholder.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/addon/edit/closebrackets.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/addon/edit/matchbrackets.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/addon/comment/comment.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-    <!-- Include the Header tool -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-    <!-- Include the List tool -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
-    <!-- Include the Image tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@latest"></script>
-    <!-- Include the Quote tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
-    <!-- Include the Checklist tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
-    <!-- Include the Code tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
-    <!-- Include the Link tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
-    <!-- Include the Embed tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
-    <!-- Include the Table tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
-    <!-- Include the Delimiter tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>
-    <!-- Include the Warning tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
-    <!-- Include the Attaches tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/attaches@latest"></script>
-    <!-- Include the Marker tool -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
-    <%= favicon_link_tag 'applyace_icon.png' %>
+        <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+
+   
+    <%= favicon_link_tag 'white-logo.png' %>
 
 </head>
  <body class="font-poppins " >
      <%= render 'home/navbar'%> 
-	   <div class="md:w-[650px] w-full md:left-[5%] h-[650px] md:scale-100 scale-75  bg-teal-100 opacity-[.22]  absolute top-[0px] blur-3xl -z-[99999]"></div>
+	   <div hidden-print class="md:w-[650px] w-full md:left-[5%] h-[650px] md:scale-100 scale-75  bg-teal-100 opacity-[.22]  absolute top-[0px] blur-3xl -z-[99999]"></div>
       <%= yield %>
      <%= render 'home/footer'%> 
 </body>

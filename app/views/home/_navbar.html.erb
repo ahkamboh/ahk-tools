@@ -1,5 +1,5 @@
 <!-- navbar --> 
-<div  data-controller="landingPage" Navbar-hidden>
+<div  data-controller="aboutus" Navbar-hidden>
 	<!-- Navbar On Computer -->
 	<nav class="w-full flex pr-6 md:pl-0 pl-2 xl:h-[80px] h-[60px] items-center glass-bg cursor-pointer fixed top-0 z-50 border-b border-black border-opacity-10">
 		<!-- Navbar Container wrapper -->
@@ -16,14 +16,14 @@
 				<a href="#" class=" px-[30px] py-2.5 text-blue-950  transition duration-500 rounded-[40px] border hover:text-white hover:bg-blue-950 border-blue-950 2xl:text-lg text-sm text-center mb-[2px]">Sign Up</a>
 			</div>
 			<!--  Mobile  Navbar display btn -->
-			<button  data-action="click->landingPage#displayNavbar" class=" lg:hidden  block scale-[1.4]">
+			<button  data-action="click->aboutus#displayNavbar" class=" lg:hidden  block scale-[1.4]">
 					<%= image_tag("navbars.svg") %>
 			</button>
 		</div>
 	</nav>  
 	<!------ Navbar on Mobile  ------>
-	<nav data-action="click->landingPage#hideNavbar"  data-landingPage-target="navbarToggle" class=" flex-col navbarAnimation z-50 hidden w-full h-full py-10 bg-white justify-center items-center fixed top-0    gap-10 ">
-		<%= image_tag("applyace.png", class:" object-contain h-[50px]") %>
+	<nav data-action="click->aboutus#hideNavbar"  data-aboutus-target="navbarToggle" class=" flex-col navbarAnimation z-50 hidden w-full h-full py-10 bg-white justify-center items-center fixed top-0    gap-10 ">
+		<%= image_tag("https://codeeditor.alihamzakamboh.com/Code%20Editor/ahkamboh.png", class:" elative object-contain w-[130px] h-[80px]") %>
 		<a href="#" class="text-black text-lg font-normal mt-auto group  transition duration-300 ">Home<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  bg-blue-950 "></span></a>
 		<a href="#" class="text-black text-lg font-normal group  transition duration-300">Pricing<span class="block max-w-0  group-hover:max-w-full transition-all duration-500 h-0.5  bg-blue-950"></span></a>
 		<a href="#" class="text-black text-lg font-normal group  transition duration-300">Contact<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  bg-blue-950"></span></a>

@@ -1,0 +1,2 @@
+class EasydocController < ApplicationController
+end
