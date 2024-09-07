@@ -3,7 +3,7 @@
 import { Controller } from "@hotwired/stimulus"
 // import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
 export default class extends Controller {
-    static targets = ["counter", "answer", "crossIcon"]
+    static targets = ["counter", "answer", "crossIcon","navbarToggle"]
     connect() {
         this.counterTargets.forEach(target => {
             const targetValue = parseInt(target.getAttribute("data-aboutus-target-value"))
@@ -53,6 +53,21 @@ export default class extends Controller {
         const id = element.dataset.id;
         return this.crossIconTargets.find(icon => icon.dataset.id === id);
     }
+
+    // navbar section
+  // Action to add a class to the target element
+  displayNavbar() {
+    this.navbarToggleTarget.classList.add("flex");
+    this.navbarToggleTarget.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+  // Action to remove a class from the target element
+  hideNavbar() {
+    this.navbarToggleTarget.classList.remove("flex");
+    this.navbarToggleTarget.classList.add("hidden");
+    document.body.style.overflow = "visible";
+  }
+
 }
 
 

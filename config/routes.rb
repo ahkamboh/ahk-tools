@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'cvmain', to:"cv#main"
   get 'temp1', to:"cv#temp1"
   get 'temp2', to:"cv#temp2"
+  get 'easydoc', to:"easydoc#index"
 
   post '/generate_content', to: 'generative_language#generate_content'
 end
