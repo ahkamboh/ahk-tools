@@ -1,8 +1,31 @@
-#!/bin/bash -e
+ n#!/bin/bash
+set -e
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+# Print error message and exit with error code
+function error_exit {
+  echo "$1" >&2
+  exit "${2:-1}"
+}
+
+# Check for required environment variables
+if [ -z "$DATABASE_URL" ]; then
+  error_exit "ERROR: DATABASE_URL environment variable is not set"
 fi
 
-exec "${@}"
+# Create or migrate database if needed
+if [ -f /rails/db/schema.rb ]; then
+  echo "Running database migrations..."
+  bin/rails db:migrate 2>/dev/null || error_exit "Database migration failed"
+else
+  echo "Creating database..."
+  bin/rails db:create db:schema:load 2>/dev/null || error_exit "Database setup failed"
+fi
+
+# Remove server.pid if it exists
+if [ -f /rails/tmp/pids/server.pid ]; then
+  echo "Removing stale server.pid file"
+  rm -f /rails/tmp/pids/server.pid
+fi
+
+# Then exec the container's main process (what's set as CMD in the Dockerfile)
+exec "$@"
