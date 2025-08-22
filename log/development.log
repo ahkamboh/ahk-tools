@@ -7034,3 +7034,299 @@ Processing by CvController#temp2 as HTML
 Completed 200 OK in 35ms (Views: 34.1ms | ActiveRecord: 0.0ms | Allocations: 12837)
 
 
+Started GET "/" for 139.135.39.48 at 2025-08-22 08:00:16 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 887.8ms | Allocations: 173036)
+  Rendered layout layouts/application.html.erb (Duration: 899.7ms | Allocations: 177417)
+Completed 500 Internal Server Error in 911ms (ActiveRecord: 0.0ms | Allocations: 181238)
+
+
+  
+ActionView::Template::Error (The asset "inter-font.css" is not present in the asset pipeline.
+):
+    13:     <meta property="twitter:description" content="Kace your ultimate Ai tool provider , Say goodbye to complex processes and Cv Writers. Effortlessly make your Resume/cv with Ai."/>
+    14:     <%= csrf_meta_tags %>
+    15:     <%= csp_meta_tag %>
+    16:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    17:     <!-- Fonts -->
+    18:     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;800&display=swap"rel="stylesheet">  
+    19:     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+  
+app/views/layouts/application.html.erb:16:in '_app_views_layouts_application_html_erb__4020682450614778435_9304'
+Started GET "/cv/index" for 139.135.39.48 at 2025-08-22 08:01:10 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for CvController):
+  
+actionpack (7.1.5.2) lib/abstract_controller/base.rb:155:in 'AbstractController::Base#process'
+actionview (7.1.5.2) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (7.1.5.2) lib/action_controller/metal.rb:227:in 'ActionController::Metal#dispatch'
+actionpack (7.1.5.2) lib/action_controller/metal.rb:309:in 'ActionController::Metal.dispatch'
+actionpack (7.1.5.2) lib/action_dispatch/routing/route_set.rb:49:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (7.1.5.2) lib/action_dispatch/routing/route_set.rb:32:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (7.1.5.2) lib/action_dispatch/journey/router.rb:51:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (7.1.5.2) lib/action_dispatch/journey/router.rb:131:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (7.1.5.2) lib/action_dispatch/journey/router.rb:124:in 'Array#each'
+actionpack (7.1.5.2) lib/action_dispatch/journey/router.rb:124:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (7.1.5.2) lib/action_dispatch/journey/router.rb:32:in 'ActionDispatch::Journey::Router#serve'
+actionpack (7.1.5.2) lib/action_dispatch/routing/route_set.rb:882:in 'ActionDispatch::Routing::RouteSet#call'
+rack (3.2.0) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.0) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.0) lib/rack/conditional_get.rb:31:in 'Rack::ConditionalGet#call'
+rack (3.2.0) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (7.1.5.2) lib/action_dispatch/http/permissions_policy.rb:36:in 'ActionDispatch::PermissionsPolicy::Middleware#call'
+actionpack (7.1.5.2) lib/action_dispatch/http/content_security_policy.rb:36:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/cookies.rb:689:in 'ActionDispatch::Cookies#call'
+activerecord (7.1.5.2) lib/active_record/migration.rb:655:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/callbacks.rb:29:in 'block in ActionDispatch::Callbacks#call'
+activesupport (7.1.5.2) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/callbacks.rb:28:in 'ActionDispatch::Callbacks#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/executor.rb:14:in 'ActionDispatch::Executor#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in 'ActionDispatch::ShowExceptions#call'
+railties (7.1.5.2) lib/rails/rack/logger.rb:37:in 'Rails::Rack::Logger#call_app'
+railties (7.1.5.2) lib/rails/rack/logger.rb:24:in 'block in Rails::Rack::Logger#call'
+activesupport (7.1.5.2) lib/active_support/tagged_logging.rb:139:in 'block in ActiveSupport::TaggedLogging#tagged'
+activesupport (7.1.5.2) lib/active_support/tagged_logging.rb:39:in 'ActiveSupport::TaggedLogging::Formatter#tagged'
+activesupport (7.1.5.2) lib/active_support/tagged_logging.rb:139:in 'ActiveSupport::TaggedLogging#tagged'
+activesupport (7.1.5.2) lib/active_support/broadcast_logger.rb:241:in 'ActiveSupport::BroadcastLogger#method_missing'
+railties (7.1.5.2) lib/rails/rack/logger.rb:24:in 'Rails::Rack::Logger#call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in 'Sprockets::Rails::QuietAssets#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/remote_ip.rb:92:in 'ActionDispatch::RemoteIp#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/request_id.rb:28:in 'ActionDispatch::RequestId#call'
+rack (3.2.0) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.0) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (7.1.5.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/server_timing.rb:59:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/server_timing.rb:24:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/server_timing.rb:58:in 'ActionDispatch::ServerTiming#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/executor.rb:14:in 'ActionDispatch::Executor#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/static.rb:25:in 'ActionDispatch::Static#call'
+rack (3.2.0) lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+actionpack (7.1.5.2) lib/action_dispatch/middleware/host_authorization.rb:141:in 'ActionDispatch::HostAuthorization#call'
+railties (7.1.5.2) lib/rails/engine.rb:536:in 'Rails::Engine#call'
+puma (6.6.1) lib/puma/configuration.rb:279:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (6.6.1) lib/puma/request.rb:99:in 'block in Puma::Request#handle_request'
+puma (6.6.1) lib/puma/thread_pool.rb:390:in 'Puma::ThreadPool#with_force_shutdown'
+puma (6.6.1) lib/puma/request.rb:98:in 'Puma::Request#handle_request'
+puma (6.6.1) lib/puma/server.rb:472:in 'Puma::Server#process_client'
+puma (6.6.1) lib/puma/server.rb:254:in 'block in Puma::Server#run'
+puma (6.6.1) lib/puma/thread_pool.rb:167:in 'block in Puma::ThreadPool#spawn_thread'
+Started GET "/cv" for 139.135.39.48 at 2025-08-22 08:01:15 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/cv"):
+  
+Started GET "/temp1" for 139.135.39.48 at 2025-08-22 08:01:48 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 3.1ms | Allocations: 2261)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 4.4ms | Allocations: 3002)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 6150)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 7012)
+
+
+  
+ActionView::Template::Error (The asset "inter-font.css" is not present in the asset pipeline.
+):
+    13:     <meta property="twitter:description" content="Kace your ultimate Ai tool provider , Say goodbye to complex processes and Cv Writers. Effortlessly make your Resume/cv with Ai."/>
+    14:     <%= csrf_meta_tags %>
+    15:     <%= csp_meta_tag %>
+    16:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    17:     <!-- Fonts -->
+    18:     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;800&display=swap"rel="stylesheet">  
+    19:     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+  
+app/views/layouts/application.html.erb:16:in '_app_views_layouts_application_html_erb__4020682450614778435_12384'
+Started GET "/" for 139.135.39.48 at 2025-08-22 08:02:45 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 160.2ms | Allocations: 90277)
+  Rendered home/_navbar.html.erb (Duration: 1.8ms | Allocations: 1479)
+  Rendered home/_footer.html.erb (Duration: 1.5ms | Allocations: 1397)
+  Rendered layout layouts/application.html.erb (Duration: 186.8ms | Allocations: 129877)
+Completed 200 OK in 192ms (Views: 190.2ms | ActiveRecord: 0.0ms | Allocations: 132379)
+
+
+Started GET "/" for 139.135.39.48 at 2025-08-22 08:02:47 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 3405)
+  Rendered home/_navbar.html.erb (Duration: 2.4ms | Allocations: 1307)
+  Rendered home/_footer.html.erb (Duration: 0.6ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 28.7ms | Allocations: 11084)
+Completed 200 OK in 30ms (Views: 29.7ms | ActiveRecord: 0.0ms | Allocations: 11318)
+
+
+Started GET "/components/style.css" for 139.135.39.48 at 2025-08-22 08:02:48 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for 139.135.39.48 at 2025-08-22 08:03:05 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 3.6ms | Allocations: 2215)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2949)
+  Rendered home/_navbar.html.erb (Duration: 1.1ms | Allocations: 1274)
+  Rendered home/_footer.html.erb (Duration: 0.5ms | Allocations: 705)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 8304)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 8749)
+
+
+Started GET "/temp1" for 139.135.39.48 at 2025-08-22 08:03:10 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.2ms | Allocations: 1030)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1096)
+  Rendered home/_navbar.html.erb (Duration: 1.2ms | Allocations: 1284)
+  Rendered home/_footer.html.erb (Duration: 0.6ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 6524)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 6761)
+
+
+Started GET "/recmnd_letter" for 139.135.39.48 at 2025-08-22 08:03:47 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/recmnd_letter"):
+  
+Started GET "/recmnd_letter/index" for 139.135.39.48 at 2025-08-22 08:03:52 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by RecmndLetterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recmnd_letter/index.html.erb within layouts/application
+  Rendered recmnd_letter/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 19475)
+  Rendered home/_navbar.html.erb (Duration: 1.1ms | Allocations: 1285)
+  Rendered home/_footer.html.erb (Duration: 0.4ms | Allocations: 641)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 24637)
+Completed 200 OK in 22ms (Views: 21.6ms | ActiveRecord: 0.0ms | Allocations: 25075)
+
+
+Started GET "/components/style.css" for 139.135.39.48 at 2025-08-22 08:03:52 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/recmnd_letter" for 139.135.39.48 at 2025-08-22 08:05:20 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/recmnd_letter"):
+  
+Started GET "/temp1" for 139.135.39.48 at 2025-08-22 08:05:22 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.2ms | Allocations: 1030)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1096)
+  Rendered home/_navbar.html.erb (Duration: 1.0ms | Allocations: 1284)
+  Rendered home/_footer.html.erb (Duration: 0.6ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 6514)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 6748)
+
+
+Started GET "/components/style.css" for 139.135.39.48 at 2025-08-22 08:05:22 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp1" for 139.135.39.48 at 2025-08-22 08:06:44 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CvController#temp1 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp1.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.2ms | Allocations: 1030)
+  Rendered cv/temp1.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1096)
+  Rendered home/_navbar.html.erb (Duration: 1.1ms | Allocations: 1284)
+  Rendered home/_footer.html.erb (Duration: 0.6ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 6508)
+Completed 200 OK in 8ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 6742)
+
+
+Started GET "/components/style.css" for 139.135.39.48 at 2025-08-22 08:06:45 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/blog" for 139.135.39.48 at 2025-08-22 08:07:25 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/blog"):
+  
+Started GET "/blog" for 139.135.39.48 at 2025-08-22 08:07:43 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/blog"):
+  
+Started GET "/" for 139.135.39.48 at 2025-08-22 08:07:46 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 3411)
+  Rendered home/_navbar.html.erb (Duration: 1.1ms | Allocations: 1307)
+  Rendered home/_footer.html.erb (Duration: 0.5ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 8842)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 9074)
+
+
+Started GET "/components/style.css" for 139.135.39.48 at 2025-08-22 08:07:47 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/components/style.css"):
+  
+Started GET "/temp2" for 139.135.39.48 at 2025-08-22 08:07:53 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CvController#temp2 as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cv/temp2.html.erb within layouts/application
+  Rendered cv/_cvform.html.erb (Duration: 1.2ms | Allocations: 1030)
+  Rendered cv/temp2.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2214)
+  Rendered home/_navbar.html.erb (Duration: 1.2ms | Allocations: 1284)
+  Rendered home/_footer.html.erb (Duration: 0.7ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 7638)
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 7933)
+
+
+Started GET "/index" for 139.135.39.48 at 2025-08-22 08:08:12 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/index"):
+  
+Started GET "/index" for 139.135.39.48 at 2025-08-22 08:08:13 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/index"):
+  
+Started GET "/index" for 139.135.39.48 at 2025-08-22 08:08:13 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/index"):
+  
+Started GET "/blog" for 139.135.39.48 at 2025-08-22 08:08:17 +0000
+Cannot render console from 139.135.39.48! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/blog"):
+  
