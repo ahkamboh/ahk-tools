@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   root "home#index"
   get 'cv/index'
   get 'cv/edit'
-  get 'cvmain', to:"cv#main"
+  get 'c', to:"cv#main"
   get 'temp1', to:"cv#temp1"
   get 'temp2', to:"cv#temp2"
   get 'easydoc', to:"easydoc#index"
