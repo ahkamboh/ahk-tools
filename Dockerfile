@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Match Ruby in Gemfile / .ruby-version
-ARG RUBY_VERSION=3.1.0
+ARG RUBY_VERSION=3.4.1
 # Match Bundler version to the one in Gemfile.lock (BUNDLED WITH)
 ARG BUNDLER_VERSION=2.5.3
 
@@ -39,6 +39,14 @@ RUN bundle _${BUNDLER_VERSION}_ install && \
 
 # App source
 COPY . .
+
+# Fix Dotenv reference in application.rb for production builds
+RUN sed -i '/Dotenv::Railtie.load/i if defined?(Dotenv)' /rails/config/application.rb && \
+    sed -i '/Dotenv::Railtie.load/a end' /rails/config/application.rb
+
+# Create necessary Tailwind CSS files
+RUN mkdir -p /rails/app/assets/tailwind && \
+    echo '@tailwind base;\n@tailwind components;\n@tailwind utilities;' > /rails/app/assets/tailwind/application.css
 
 # Bootsnap precompile for app code
 RUN bundle exec bootsnap precompile app/ lib/
