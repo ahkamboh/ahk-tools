@@ -19,6 +19,9 @@ ENV RAILS_ENV=production \
 # ---------- Build stage ----------
 FROM base AS build
 
+# Add this line to redefine the ARG in this stage
+ARG BUNDLER_VERSION
+
 # System deps to compile gems (pg) & assets
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
