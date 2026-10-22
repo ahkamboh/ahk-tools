@@ -330,7 +330,6 @@ deletePhoto() {
 
   generate(event) {
     event.preventDefault();
-    const apiKey = document.querySelector('[data-api-key]').dataset.apiKey;
     const clickedButton = event.currentTarget;
     const loader = clickedButton.querySelector("[data-cv-target='loader']");
     loader.classList.remove("hidden");
@@ -361,20 +360,15 @@ deletePhoto() {
     }
 
     if (editorIndex !== -1 && this.ckEditorInstances[editorIndex]) {
-      const apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
 
-      fetch(`${apiEndpoint}?key=${apiKey}`, {  // Accessing API key from environment variable
+      fetch('/generate_content', {  // Gemini is called on the server, so the API key never reaches the browser
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
-        })
+        body: JSON.stringify({ prompt })
       })
         .then(response => response.json())
         .then(data => {

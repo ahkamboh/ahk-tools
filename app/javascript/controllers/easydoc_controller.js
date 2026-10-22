@@ -79,11 +79,12 @@ export default class extends Controller {
 
   async callGeminiAPI(prompt) {
     console.log("Calling Gemini API")
-    const API_KEY = '***REMOVED***'
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent'
+    // Gemini is called on the server (POST /generate_content) so the API key never reaches the browser
+    const url = '/generate_content'
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
     
     const requestBody = {
-      contents: [{ parts: [{ text: prompt }] }],
+      prompt,
       generationConfig: {
         temperature: 0.7,
         topK: 40,
@@ -93,9 +94,9 @@ export default class extends Controller {
     }
 
     try {
-      const response = await fetch(`${url}?key=${API_KEY}`, {
+      const response = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
         body: JSON.stringify(requestBody),
       })
 
